@@ -9,4 +9,4 @@
 - download or clone from gitub. 
 - open cmd or Node.js command prompt and navigate to the project directory  (cd path)
 - run 'npm install' 
-- after it finishes, run 'node app.js' (in cmd)
+- after it finishes, run 'node app.js' (in cmd) or npm start (to open localhost:8000)
