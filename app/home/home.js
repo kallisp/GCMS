@@ -27,10 +27,9 @@ angular.module('myApp.home', ['ngRoute'])
     // }),
 
     var wmsSource = new ol.source.TileWMS({
-      url: 'geoserver/test_liparo/wms',
-      params: { 'LAYERS': 'test_liparo:ASTOTA', 'TILED': true, FORMAT: 'image/png', STYLES: '' },
-      serverType: 'geoserver',
-      crossOrigin: 'anonymous'
+      url: 'geoserver/GCMS/wms',
+      params: { 'LAYERS': 'GCMS:graves', 'TILED': true, FORMAT: 'image/png', STYLES: '' },
+      serverType: 'geoserver'
     })
 
     var layers = [
@@ -39,7 +38,7 @@ angular.module('myApp.home', ['ngRoute'])
       }),
     ];
     var view = new ol.View({
-      center: ol.proj.transform([346101, 4508000], 'EPSG:2100', 'EPSG:3857'),
+      center: ol.proj.transform([433590, 4204888], 'EPSG:2100', 'EPSG:3857'),
       zoom: 12,
     });
 
@@ -56,11 +55,11 @@ angular.module('myApp.home', ['ngRoute'])
     });
 
     // center the map from 3857 default projection to WGS84 - 2100
-    map.getView().setCenter(ol.proj.transform([346101, 4508000], 'EPSG:2100', 'EPSG:3857'));
+    map.getView().setCenter(ol.proj.transform([433590, 4204888], 'EPSG:2100', 'EPSG:3857'));
 
     // set the extent of the map to use in var when zooms to extent
 
-    var extent = ol.proj.transformExtent([340000, 4504010, 353000, 4514000], "EPSG:2100", "EPSG:3857");
+    var extent = ol.proj.transformExtent([483476, 4203872, 483500, 4203900], "EPSG:2100", "EPSG:3857");
 
     var zoomToExtentControl = new ol.control.ZoomToExtent({
       tipLabel: 'Zoom to extent',
