@@ -5,11 +5,10 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.home',
   'myApp.view2',
-  'myApp.version',
-  'openlayers-directive'
+  'myApp.version'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+  config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+    $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/home'});
-}]);
+    $routeProvider.otherwise({ redirectTo: '/home' });
+  }]);
