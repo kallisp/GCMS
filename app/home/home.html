@@ -1,22 +1,35 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
             <a class="navbar-brand" href="#">Cemetery Geographic Information System</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="#">Link</a></li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
             </ul>
-        </div>  
+        </div>
     </div>
 </nav>
 <div id="map" class="map"></div>
- 
+
 <div class="sidebar">
     <h3>Λεπτομερειες Μνήματος</h3>
-    {{featureURL}}
+    <b>Onoma</b>
+    <div>{{table['Όνομα']}}</div>
+
+    <b>Epwnumo</b>
+    <div>{{table['Επώνυμο']}}</div>
+
+    <b> eidos</b>
+    <div> {{table['Είδος_τάφο']}}</div>
+
+    <b>patronumo</b>
+    <div> {{table['Πατρώνυμο']}}</div>
 </div>
 <div id="legend" class="legend">
     <img src="geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=graves">
 </div>
+<div id="info" class="info">&nbsp;</div>

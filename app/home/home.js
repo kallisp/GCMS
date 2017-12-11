@@ -9,36 +9,47 @@ angular.module('myApp.home', ['ngRoute'])
     });
   }])
 
-  .controller('HomeCtrl', ['$scope', '$compile', function ($scope, $compile) {
+  .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
 
     $scope.featureURL = '';
 
-    /*new ol.layer.Tile({
-      source: new ol.source.OSM()
-    }),*/
-
-    // new ol.layer.Tile({
-    // source: new ol.source.TileWMS({
-    //       url: 'http://gis.ktimanet.gr/wms/wmsopen/wmsserver.aspx?',
-    //       params: {'LAYERS':'test_liparo:KTBASEMAP', 'TILED': true, FORMAT:'image/png', STYLES:''},
-    //       serverType: 'geoserver',
-    //       crossOrigin:'anonymous'
-    //     })
-    // }),
-
+    
     var wmsSource = new ol.source.TileWMS({
       url: 'geoserver/GCMS/wms',
       params: { 'LAYERS': 'GCMS:graves', 'TILED': true, FORMAT: 'image/png', STYLES: '' },
       serverType: 'geoserver'
-    })
+    });
 
     var layers = [
-      new ol.layer.Tile({
-        source: wmsSource
-      }),
+
+      /*new ol.layer.Tile({
+        source: new ol.source.OSM()
+      }),*/
+
+     /* new ol.layer.Tile({
+      source: new ol.source.TileWMS({
+           url: 'http://gis.ktimanet.gr/wms/wmsopen/wmsserver.aspx?',
+           params: {'LAYERS':'test_liparo:KTBASEMAP', 'TILED': true, FORMAT:'image/png', STYLES:''},
+           serverType: 'geoserver',
+         })
+     }),*/
+
+     /*new ol.layer.Tile({
+      preload: Infinity,
+      source: new ol.source.BingMaps({
+        key: 'AvBoZth-baIvkrwdU1nL9SjZ_RTWsytAN1q-4Ze5686OmkTT4Gi9Zon1VVci82cA',
+        imagerySet: 'Aerial',
+      })
+    }),*/
+
+     new ol.layer.Tile({
+      source: wmsSource
+    }),
+
     ];
+
     var view = new ol.View({
-      center: ol.proj.transform([433590, 4204888], 'EPSG:2100', 'EPSG:3857'),
+      center: ol.proj.transform([23.48, 37.59], 'EPSG:4326', 'EPSG:3857'),
       zoom: 12,
     });
 
@@ -48,18 +59,18 @@ angular.module('myApp.home', ['ngRoute'])
           units: 'metric'
         }),
       ]),
-
+      loadTilesWhileInteracting: true,
       layers: layers,
       target: 'map',
       view: view,
     });
 
-    // center the map from 3857 default projection to WGS84 - 2100
-    map.getView().setCenter(ol.proj.transform([433590, 4204888], 'EPSG:2100', 'EPSG:3857'));
+    // center the map from 3857 default projection to 2100
+    map.getView().setCenter(ol.proj.transform([23.48, 37.59], 'EPSG:4326', 'EPSG:3857'));
 
     // set the extent of the map to use in var when zooms to extent
 
-    var extent = ol.proj.transformExtent([483476, 4203872, 483500, 4203900], "EPSG:2100", "EPSG:3857");
+    var extent = ol.proj.transformExtent([23.813540691981, 37.98493284104141, 23.813803222295466, 37.98522795287264], "EPSG:4326", "EPSG:3857");
 
     var zoomToExtentControl = new ol.control.ZoomToExtent({
       tipLabel: 'Zoom to extent',
@@ -77,23 +88,26 @@ angular.module('myApp.home', ['ngRoute'])
       }
     });
 
-    map.on('click', function (evt) {
-      var viewResolution = /** @type {number} */ (view.getResolution());
+    //Get Feature Info Request - when click
+     map.on('singleclick', function (evt) {
+      document.getElementById('info').innerHTML = '';
+      var viewResolution = /* @type {number} */ (view.getResolution());
       var url = wmsSource.getGetFeatureInfoUrl(
         evt.coordinate, viewResolution, 'EPSG:3857',
-        { 'INFO_FORMAT': 'text/html' });
+        { 'INFO_FORMAT': 'application/json', 'FEATURE_COUNT': 100 });
+      if (url) {
+        // GET / PUT / POST / DELETE 
+        $http.get(url).then(function(response){
+          console.log(response);
+          var myData = response.data.features; // features is an array.
 
-        $scope.$apply(function(){
-        
-          $scope.featureURL = url;
-          
+          if (myData.length>0){ // element at index:0 (first item) has my data
+            var item = myData[0];
+              // make it available to html, through $scope
+            $scope.table = item.properties;
+          }
         })
-        
-      // map.forEachFeatureAtPixel(evt.pixel, function(layer){ 
-      //     if(layer==='ASTOTA') {
-      //         console.log('layer clicked');
-      //     } 
-      // });
-    });
+    }
+  })
 
   }]);
