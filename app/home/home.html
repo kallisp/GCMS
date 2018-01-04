@@ -1,35 +1,141 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse navbar-no-round">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Cemetery Geographic Information System</a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">Link</a>
-                </li>
-            </ul>
+        <div class="nav navbar-nav navbar-right navbar-form">
+            <!-- toggleSearch is a  function so when we click we call that function-->
+            <button class="btn btn-info" ng-click="toggleSearch()">Αναζήτηση</button>
+            <button class="btn btn-info" ng-click="toggleEdit()">Επεξεργασία</button>
+        </div>
+        <div class="navbar-center">
+            <span class="color-white">Προβολή θεματικού χάρτη</span>
+            <!-- we use ng-change to undestand when we change an option among predefined options in select -->
+            <select class="space-left" ng-model="thematicMap" ng-change="changeThematicMap()">
+                <option value="CategoryMap">Κατηγορία</option>
+                <option value="AvailabilityMap">Χωρητικότητα</option>
+            </select>
         </div>
     </div>
 </nav>
 <div id="map" class="map"></div>
 
-<div class="sidebar">
-    <h3>Λεπτομερειες Μνήματος</h3>
-    <b>Onoma</b>
-    <div>{{table['Όνομα']}}</div>
-
-    <b>Epwnumo</b>
-    <div>{{table['Επώνυμο']}}</div>
-
-    <b> eidos</b>
-    <div> {{table['Είδος_τάφο']}}</div>
-
-    <b>patronumo</b>
-    <div> {{table['Πατρώνυμο']}}</div>
+<div class="sidebar" ng-show="table != null && sidebarSearchOpen == false">
+    <h4 class="sidebar-details-title">Πληροφορίες Θανόντος</h4>
+    <table class="table table-striped" style="width:100%">
+        <tr>
+            <td class="search-property">Διάδρομος</td>
+            <td class="search-results">{{table.properties.DIADROMOS}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Θέση</td>
+            <td class="search-results">{{table.properties.THESI}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Όνομα</td>
+            <td class="search-results">{{table.properties.NAME}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Επώνυμο</td>
+            <td class="search-results">{{table.properties.SURNAME}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Είδος</td>
+            <td class="search-results">{{table.properties.CATEGORY_G}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Πατρώνυμο</td>
+            <td class="search-results">{{table.properties.FATHER_N}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Μητρώνυμο</td>
+            <td class="search-results">{{table.properties.MOTHER_N}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Ημερομηνία Θανάτου</td>
+            <td class="search-results">{{table.properties.DEATH_DATE | date}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Τόπος Θανάτου</td>
+            <td class="search-results">{{table.properties.DEATH_PLAC}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Ημερομηνία Γέννησης</td>
+            <td class="search-results">{{table.properties.BIRTH_DATE | date}}</td>
+        </tr>
+        <tr>
+            <td class="search-property">Ηλικία</td>
+            <td class="search-results">{{table.properties.AGE | date}}</td>
+        </tr>
+        <tr>
+        <td class="search-property">Κατηγορία τάφου</td>
+        <td class="search-results">{{table.properties.CATEGORY_G}}</td>
+    </tr>
+    <tr>
+        <td class="search-property">Διαθεσιμότητα</td>
+        <td>{{table.properties.AVAILABILI}}</td>
+    </tr>
+    </table>
+    <button class="btn btn-primary results-edit" ng-click="toggleEdit()">Επεξεργασία</button>
 </div>
-<div id="legend" class="legend">
+<!-- show search button when is true (clicked)-->
+<div class="sidebar" ng-show="sidebarSearchOpen == true">
+    <form>
+        <div class="form-group">
+            <label>Όνομα</label>
+            <input type="text" class="form-control" placeholder="Εισάγετε όνομα" ng-model="name">
+            <!-- we use ng-model for clients inputs to access properties of the controller - the value is the property of an object instantiated in controller)-->
+        </div>
+        <div class="form-group">
+            <label>Επώνυμο</label>
+            <input type="text" class="form-control" placeholder="Εισάγετε επώνυμο" ng-model="surname">
+        </div>
+        <div class="form-group">
+            <label>Διάδρομος</label>
+            <input type="text" class="form-control" placeholder="Εισάγετε αριθμό διαδρόμου" ng-model="diadromos">
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click='searchFilter()'>Αναζήτηση</button>
+    </form>
+    <div class="list-group" ng-show="results.length>0">
+        <h4>
+            <b>Αποτελέσματα αναζήτησης</b>
+        </h4>
+        <div ng-repeat="r in results">
+            <a class="list-group-item" ng-click="showDetailsFilterSearch(r)">
+                <p>Διάδρομος : {{r.properties.DIADROMOS}}</p>
+                <p> Όνομα : {{r.properties.NAME}} </p>
+                <p> Επώνυμο : {{r.properties.SURNAME}}</p>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="sidebar" ng-show="sidebarEditOpen == true">
+    <b ng-show="table == null">Παρακαλώ επιλέξτε αντικείμενο προς επεξεργασία</b>
+    <form>
+        <div class="form-group">
+            <label>Όνομα</label>
+            <input type="text" class="form-control" placeholder="π.χ. Γεώργιος" ng-model="table.properties.NAME">
+        </div>
+        <div class="form-group">
+            <label>Επώνυμο</label>
+            <input type="text" class="form-control" placeholder="π.χ. Ιωάννου" ng-model="table.properties.SURNAME">
+        </div>
+        <div class="form-group">
+            <label>Διάδρομος</label>
+            <input type="text" class="form-control" placeholder="π.χ. 1" ng-model="table.properties.DIADROMOS">
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="editFeatures('update',table)">Αποθήκευση</button>
+    </form>
+</div>
+<!-- ng-class: set/append as class the left part of : ONLY IF the right part of : is true -->
+<div class="legend" ng-class="{ 'legend-right' : ( table != null || sidebarSearchOpen == true || sidebarEditOpen == true) }"
+    ng-hide="thematicMap == 'AvailabilityMap'">
+    <h4 class="legend-title">Κατηγορία Τάφων</h4>
     <img src="geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=graves">
 </div>
-<div id="info" class="info">&nbsp;</div>
+<div class="legend" ng-class="{ 'legend-right' : ( table != null || sidebarSearchOpen == true || sidebarEditOpen == true) }"
+    ng-show="thematicMap == 'AvailabilityMap'">
+    <h4 class="legend-title">Χωρητικότητα</h4>
+    <img src="geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=graves2">
+</div>

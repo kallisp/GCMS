@@ -15,6 +15,7 @@
     "html5-boilerplate": "^5.3.0",
     "bootstrap": "3.3.7",
     "angular-bootstrap": "^2.5.0",
-    "ol3": "ol3-bower#^3.18.2"
+    "ol3": "ol3-bower#^3.18.2",
+    "flat-ui": "^2.3.0"
   }
 }

@@ -1,0 +1,2412 @@
+{
+    "type": "FeatureCollection",
+    "totalFeatures": 100,
+    "features": [
+        {
+            "type": "Feature",
+            "id": "graves.1",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483477.96516473,
+                                4203882.69111824
+                            ],
+                            [
+                                483480.24966311,
+                                4203882.23247855
+                            ],
+                            [
+                                483479.97101811,
+                                4203880.91148248
+                            ],
+                            [
+                                483477.68651973,
+                                4203881.37012218
+                            ],
+                            [
+                                483477.96516473,
+                                4203882.69111824
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "2",
+                "THESI": "Β",
+                "SURNAME": "ΠΑΠΑΔΟΠΟΥΛΟΣ",
+                "NAME": "ΚΩΝΣΤΑΝΤΙΝΟΣ",
+                "FATHER_N": "ΙΩΑΝΝΗΣ",
+                "MOTHER_N": "ΑΙΚΑΤΕΡΙΝΗ",
+                "DEATH_DATE": "2005-12-04T22:00:00Z",
+                "DEATH_PLAC": "ΧΟΛΑΡΓΟΣ ΑΤΤΙΚΗΣ",
+                "BIRTH_DATE": "1950-03-24T22:00:00Z",
+                "AGE": 55,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Όχι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.2",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483477.68651973,
+                                4203881.37012218
+                            ],
+                            [
+                                483479.97101811,
+                                4203880.91148248
+                            ],
+                            [
+                                483479.69237312,
+                                4203879.59048643
+                            ],
+                            [
+                                483477.40787473,
+                                4203880.04912612
+                            ],
+                            [
+                                483477.68651973,
+                                4203881.37012218
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.3",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483477.40787473,
+                                4203880.04912612
+                            ],
+                            [
+                                483479.69237312,
+                                4203879.59048643
+                            ],
+                            [
+                                483479.41372812,
+                                4203878.26949036
+                            ],
+                            [
+                                483477.12922974,
+                                4203878.72813006
+                            ],
+                            [
+                                483477.40787473,
+                                4203880.04912612
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.4",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483477.04666826,
+                                4203878.33672382
+                            ],
+                            [
+                                483479.33116664,
+                                4203877.87808412
+                            ],
+                            [
+                                483479.05252165,
+                                4203876.55708806
+                            ],
+                            [
+                                483476.76802326,
+                                4203877.01572776
+                            ],
+                            [
+                                483477.04666826,
+                                4203878.33672382
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.5",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483476.76802326,
+                                4203877.01572776
+                            ],
+                            [
+                                483479.05252165,
+                                4203876.55708806
+                            ],
+                            [
+                                483478.72156952,
+                                4203874.98811515
+                            ],
+                            [
+                                483476.4447129,
+                                4203875.48298281
+                            ],
+                            [
+                                483476.76802326,
+                                4203877.01572776
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.6",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.33222459,
+                                4203882.62388479
+                            ],
+                            [
+                                483478.04772621,
+                                4203883.08252448
+                            ],
+                            [
+                                483478.3263712,
+                                4203884.40352054
+                            ],
+                            [
+                                483480.61086959,
+                                4203883.94488085
+                            ],
+                            [
+                                483480.33222459,
+                                4203882.62388479
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.7",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.61086959,
+                                4203883.94488085
+                            ],
+                            [
+                                483478.3263712,
+                                4203884.40352054
+                            ],
+                            [
+                                483478.6050162,
+                                4203885.72451661
+                            ],
+                            [
+                                483480.88951458,
+                                4203885.26587691
+                            ],
+                            [
+                                483480.61086959,
+                                4203883.94488085
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.8",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.88951458,
+                                4203885.26587691
+                            ],
+                            [
+                                483478.6050162,
+                                4203885.72451661
+                            ],
+                            [
+                                483478.8836612,
+                                4203887.04551267
+                            ],
+                            [
+                                483481.16815958,
+                                4203886.58687297
+                            ],
+                            [
+                                483480.88951458,
+                                4203885.26587691
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.9",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483481.25072106,
+                                4203886.97827921
+                            ],
+                            [
+                                483478.96622268,
+                                4203887.43691891
+                            ],
+                            [
+                                483479.24486767,
+                                4203888.75791497
+                            ],
+                            [
+                                483481.52936606,
+                                4203888.29927527
+                            ],
+                            [
+                                483481.25072106,
+                                4203886.97827921
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.10",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483481.52936606,
+                                4203888.29927527
+                            ],
+                            [
+                                483479.24486767,
+                                4203888.75791497
+                            ],
+                            [
+                                483479.52351267,
+                                4203890.07891103
+                            ],
+                            [
+                                483481.80801105,
+                                4203889.62027133
+                            ],
+                            [
+                                483481.52936606,
+                                4203888.29927527
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.11",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483481.80801105,
+                                4203889.62027133
+                            ],
+                            [
+                                483479.52351267,
+                                4203890.07891103
+                            ],
+                            [
+                                483479.80215767,
+                                4203891.39990709
+                            ],
+                            [
+                                483482.08665605,
+                                4203890.94126739
+                            ],
+                            [
+                                483481.80801105,
+                                4203889.62027133
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.12",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483482.08665605,
+                                4203890.94126739
+                            ],
+                            [
+                                483479.80215767,
+                                4203891.39990709
+                            ],
+                            [
+                                483480.08080266,
+                                4203892.72090315
+                            ],
+                            [
+                                483482.36530105,
+                                4203892.26226345
+                            ],
+                            [
+                                483482.08665605,
+                                4203890.94126739
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.13",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483482.44786253,
+                                4203892.65366969
+                            ],
+                            [
+                                483480.16336414,
+                                4203893.11230939
+                            ],
+                            [
+                                483480.44200914,
+                                4203894.43330545
+                            ],
+                            [
+                                483482.72650752,
+                                4203893.97466575
+                            ],
+                            [
+                                483482.44786253,
+                                4203892.65366969
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.14",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483482.72650752,
+                                4203893.97466575
+                            ],
+                            [
+                                483480.44200914,
+                                4203894.43330545
+                            ],
+                            [
+                                483480.72065413,
+                                4203895.75430151
+                            ],
+                            [
+                                483483.00515252,
+                                4203895.29566181
+                            ],
+                            [
+                                483482.72650752,
+                                4203893.97466575
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.15",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.00515252,
+                                4203895.29566181
+                            ],
+                            [
+                                483480.72065413,
+                                4203895.75430151
+                            ],
+                            [
+                                483480.99929913,
+                                4203897.07529757
+                            ],
+                            [
+                                483483.28379752,
+                                4203896.61665787
+                            ],
+                            [
+                                483483.00515252,
+                                4203895.29566181
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.16",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.366359,
+                                4203897.00806411
+                            ],
+                            [
+                                483481.08186061,
+                                4203897.46670381
+                            ],
+                            [
+                                483481.36050561,
+                                4203898.78769987
+                            ],
+                            [
+                                483483.64500399,
+                                4203898.32906017
+                            ],
+                            [
+                                483483.366359,
+                                4203897.00806411
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.17",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.64500399,
+                                4203898.32906017
+                            ],
+                            [
+                                483481.36050561,
+                                4203898.78769987
+                            ],
+                            [
+                                483481.6391506,
+                                4203900.10869593
+                            ],
+                            [
+                                483483.92364899,
+                                4203899.65005624
+                            ],
+                            [
+                                483483.64500399,
+                                4203898.32906017
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.18",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.92364899,
+                                4203899.65005624
+                            ],
+                            [
+                                483481.6391506,
+                                4203900.10869593
+                            ],
+                            [
+                                483481.9177956,
+                                4203901.42969199
+                            ],
+                            [
+                                483484.20229399,
+                                4203900.9710523
+                            ],
+                            [
+                                483483.92364899,
+                                4203899.65005624
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.19",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483484.2838347,
+                                4203901.3576193
+                            ],
+                            [
+                                483481.99933632,
+                                4203901.816259
+                            ],
+                            [
+                                483482.27798131,
+                                4203903.13725506
+                            ],
+                            [
+                                483484.5624797,
+                                4203902.67861536
+                            ],
+                            [
+                                483484.2838347,
+                                4203901.3576193
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.20",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483484.5624797,
+                                4203902.67861536
+                            ],
+                            [
+                                483482.27798131,
+                                4203903.13725506
+                            ],
+                            [
+                                483482.55760986,
+                                4203904.46291395
+                            ],
+                            [
+                                483484.84215277,
+                                4203904.0044853
+                            ],
+                            [
+                                483484.5624797,
+                                4203902.67861536
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.21",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.25720954,
+                                4203877.69217021
+                            ],
+                            [
+                                483482.54173611,
+                                4203877.23352486
+                            ],
+                            [
+                                483482.26309111,
+                                4203875.9125288
+                            ],
+                            [
+                                483479.97856454,
+                                4203876.37117415
+                            ],
+                            [
+                                483480.25720954,
+                                4203877.69217021
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.22",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483479.97856454,
+                                4203876.37117415
+                            ],
+                            [
+                                483482.26309111,
+                                4203875.9125288
+                            ],
+                            [
+                                483481.92139947,
+                                4203874.29264213
+                            ],
+                            [
+                                483479.64451476,
+                                4203874.78751589
+                            ],
+                            [
+                                483479.97856454,
+                                4203876.37117415
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.23",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.33977102,
+                                4203878.08357645
+                            ],
+                            [
+                                483480.61841601,
+                                4203879.40457251
+                            ],
+                            [
+                                483482.90294258,
+                                4203878.94592716
+                            ],
+                            [
+                                483482.62429759,
+                                4203877.6249311
+                            ],
+                            [
+                                483480.33977102,
+                                4203878.08357645
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.24",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.61841601,
+                                4203879.40457251
+                            ],
+                            [
+                                483480.89706101,
+                                4203880.72556857
+                            ],
+                            [
+                                483483.18158758,
+                                4203880.26692322
+                            ],
+                            [
+                                483482.90294258,
+                                4203878.94592716
+                            ],
+                            [
+                                483480.61841601,
+                                4203879.40457251
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.25",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483480.89706101,
+                                4203880.72556857
+                            ],
+                            [
+                                483481.17570601,
+                                4203882.04656463
+                            ],
+                            [
+                                483483.46023257,
+                                4203881.58791928
+                            ],
+                            [
+                                483483.18158758,
+                                4203880.26692322
+                            ],
+                            [
+                                483480.89706101,
+                                4203880.72556857
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.26",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.54279406,
+                                4203881.97932552
+                            ],
+                            [
+                                483481.25826749,
+                                4203882.43797087
+                            ],
+                            [
+                                483481.53691248,
+                                4203883.75896693
+                            ],
+                            [
+                                483483.82143905,
+                                4203883.30032158
+                            ],
+                            [
+                                483483.54279406,
+                                4203881.97932552
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.27",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.82143905,
+                                4203883.30032158
+                            ],
+                            [
+                                483481.53691248,
+                                4203883.75896693
+                            ],
+                            [
+                                483481.81555748,
+                                4203885.079963
+                            ],
+                            [
+                                483484.10008405,
+                                4203884.62131764
+                            ],
+                            [
+                                483483.82143905,
+                                4203883.30032158
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.28",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483484.10008405,
+                                4203884.62131764
+                            ],
+                            [
+                                483481.81555748,
+                                4203885.079963
+                            ],
+                            [
+                                483482.09420248,
+                                4203886.40095906
+                            ],
+                            [
+                                483484.37872904,
+                                4203885.9423137
+                            ],
+                            [
+                                483484.10008405,
+                                4203884.62131764
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.29",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483484.46129053,
+                                4203886.33371994
+                            ],
+                            [
+                                483482.17676396,
+                                4203886.7923653
+                            ],
+                            [
+                                483482.45540895,
+                                4203888.11336136
+                            ],
+                            [
+                                483484.73993552,
+                                4203887.654716
+                            ],
+                            [
+                                483484.46129053,
+                                4203886.33371994
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Οικογενειακός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.30",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483484.73993552,
+                                4203887.654716
+                            ],
+                            [
+                                483482.45540895,
+                                4203888.11336136
+                            ],
+                            [
+                                483482.73405395,
+                                4203889.43435742
+                            ],
+                            [
+                                483485.01858052,
+                                4203888.97571206
+                            ],
+                            [
+                                483484.73993552,
+                                4203887.654716
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.31",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483485.01858052,
+                                4203888.97571206
+                            ],
+                            [
+                                483482.73405395,
+                                4203889.43435742
+                            ],
+                            [
+                                483483.01269895,
+                                4203890.75535348
+                            ],
+                            [
+                                483485.29722551,
+                                4203890.29670812
+                            ],
+                            [
+                                483485.01858052,
+                                4203888.97571206
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.32",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483485.29722551,
+                                4203890.29670812
+                            ],
+                            [
+                                483483.01269895,
+                                4203890.75535348
+                            ],
+                            [
+                                483483.29134394,
+                                4203892.07634954
+                            ],
+                            [
+                                483485.57587051,
+                                4203891.61770418
+                            ],
+                            [
+                                483485.29722551,
+                                4203890.29670812
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.33",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483485.65843199,
+                                4203892.00911042
+                            ],
+                            [
+                                483483.37390542,
+                                4203892.46775578
+                            ],
+                            [
+                                483483.65255042,
+                                4203893.78875184
+                            ],
+                            [
+                                483485.93707699,
+                                4203893.33010649
+                            ],
+                            [
+                                483485.65843199,
+                                4203892.00911042
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.34",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483485.93707699,
+                                4203893.33010649
+                            ],
+                            [
+                                483483.65255042,
+                                4203893.78875184
+                            ],
+                            [
+                                483483.93119542,
+                                4203895.1097479
+                            ],
+                            [
+                                483486.21572198,
+                                4203894.65110255
+                            ],
+                            [
+                                483485.93707699,
+                                4203893.33010649
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Οικογενειακός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.35",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483483.93119542,
+                                4203895.1097479
+                            ],
+                            [
+                                483484.20984041,
+                                4203896.43074396
+                            ],
+                            [
+                                483486.49436698,
+                                4203895.97209861
+                            ],
+                            [
+                                483486.21572198,
+                                4203894.65110255
+                            ],
+                            [
+                                483483.93119542,
+                                4203895.1097479
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.36",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483486.57692846,
+                                4203896.36350484
+                            ],
+                            [
+                                483484.29240189,
+                                4203896.8221502
+                            ],
+                            [
+                                483484.57104689,
+                                4203898.14314626
+                            ],
+                            [
+                                483486.85557346,
+                                4203897.68450091
+                            ],
+                            [
+                                483486.57692846,
+                                4203896.36350484
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.37",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483486.85557346,
+                                4203897.68450091
+                            ],
+                            [
+                                483484.57104689,
+                                4203898.14314626
+                            ],
+                            [
+                                483484.84969189,
+                                4203899.46414232
+                            ],
+                            [
+                                483487.13421845,
+                                4203899.00549697
+                            ],
+                            [
+                                483486.85557346,
+                                4203897.68450091
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.38",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483487.13421845,
+                                4203899.00549697
+                            ],
+                            [
+                                483484.84969189,
+                                4203899.46414232
+                            ],
+                            [
+                                483485.12833688,
+                                4203900.78513838
+                            ],
+                            [
+                                483487.41286345,
+                                4203900.32649303
+                            ],
+                            [
+                                483487.13421845,
+                                4203899.00549697
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.39",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483485.2098776,
+                                4203901.17170539
+                            ],
+                            [
+                                483485.48852259,
+                                4203902.49270145
+                            ],
+                            [
+                                483487.77304916,
+                                4203902.0340561
+                            ],
+                            [
+                                483487.49440416,
+                                4203900.71306003
+                            ],
+                            [
+                                483485.2098776,
+                                4203901.17170539
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.40",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483485.48852259,
+                                4203902.49270145
+                            ],
+                            [
+                                483485.76821371,
+                                4203903.81865694
+                            ],
+                            [
+                                483488.05278479,
+                                4203903.36022263
+                            ],
+                            [
+                                483487.77304916,
+                                4203902.0340561
+                            ],
+                            [
+                                483485.48852259,
+                                4203902.49270145
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.41",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483489.81645041,
+                                4203903.00631602
+                            ],
+                            [
+                                483492.10102149,
+                                4203902.54788171
+                            ],
+                            [
+                                483491.82120697,
+                                4203901.2213412
+                            ],
+                            [
+                                483489.53668041,
+                                4203901.67998655
+                            ],
+                            [
+                                483489.81645041,
+                                4203903.00631602
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.42",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483489.53668041,
+                                4203901.67998655
+                            ],
+                            [
+                                483491.82120697,
+                                4203901.2213412
+                            ],
+                            [
+                                483491.54256198,
+                                4203899.90034514
+                            ],
+                            [
+                                483489.25803541,
+                                4203900.35899049
+                            ],
+                            [
+                                483489.53668041,
+                                4203901.67998655
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Οικογενειακός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.43",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483489.1764947,
+                                4203899.97242348
+                            ],
+                            [
+                                483491.46102126,
+                                4203899.51377813
+                            ],
+                            [
+                                483491.18237627,
+                                4203898.19278207
+                            ],
+                            [
+                                483488.8978497,
+                                4203898.65142742
+                            ],
+                            [
+                                483489.1764947,
+                                4203899.97242348
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.44",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483488.8978497,
+                                4203898.65142742
+                            ],
+                            [
+                                483491.18237627,
+                                4203898.19278207
+                            ],
+                            [
+                                483490.90373127,
+                                4203896.87178601
+                            ],
+                            [
+                                483488.6192047,
+                                4203897.33043136
+                            ],
+                            [
+                                483488.8978497,
+                                4203898.65142742
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.45",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483488.6192047,
+                                4203897.33043136
+                            ],
+                            [
+                                483490.90373127,
+                                4203896.87178601
+                            ],
+                            [
+                                483490.62508627,
+                                4203895.55078995
+                            ],
+                            [
+                                483488.34055971,
+                                4203896.0094353
+                            ],
+                            [
+                                483488.6192047,
+                                4203897.33043136
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.46",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483488.25799823,
+                                4203895.61802906
+                            ],
+                            [
+                                483490.54252479,
+                                4203895.15938371
+                            ],
+                            [
+                                483490.2638798,
+                                4203893.83838765
+                            ],
+                            [
+                                483487.97935323,
+                                4203894.297033
+                            ],
+                            [
+                                483488.25799823,
+                                4203895.61802906
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.47",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483487.97935323,
+                                4203894.297033
+                            ],
+                            [
+                                483490.2638798,
+                                4203893.83838765
+                            ],
+                            [
+                                483489.9852348,
+                                4203892.51739159
+                            ],
+                            [
+                                483487.70070823,
+                                4203892.97603694
+                            ],
+                            [
+                                483487.97935323,
+                                4203894.297033
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.48",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483487.70070823,
+                                4203892.97603694
+                            ],
+                            [
+                                483489.9852348,
+                                4203892.51739159
+                            ],
+                            [
+                                483489.7065898,
+                                4203891.19639553
+                            ],
+                            [
+                                483487.42206324,
+                                4203891.65504088
+                            ],
+                            [
+                                483487.70070823,
+                                4203892.97603694
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.49",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483487.33950176,
+                                4203891.26363464
+                            ],
+                            [
+                                483489.62402832,
+                                4203890.80498929
+                            ],
+                            [
+                                483489.34538333,
+                                4203889.48399322
+                            ],
+                            [
+                                483487.06085676,
+                                4203889.94263858
+                            ],
+                            [
+                                483487.33950176,
+                                4203891.26363464
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "",
+                "THESI": "",
+                "SURNAME": "",
+                "NAME": "",
+                "FATHER_N": "",
+                "MOTHER_N": "",
+                "DEATH_DATE": null,
+                "DEATH_PLAC": "",
+                "BIRTH_DATE": null,
+                "AGE": 0,
+                "CATEGORY_G": "Προσωρινός κοινός τάφος",
+                "AVAILABILI": "Ναι"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "graves.50",
+            "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [
+                        [
+                            [
+                                483487.06085676,
+                                4203889.94263858
+                            ],
+                            [
+                                483489.34538333,
+                                4203889.48399322
+                            ],
+                            [
+                                483489.06673833,
+                                4203888.16299717
+                            ],
+                            [
+                                483486.78221176,
+                                4203888.62164252
+                            ],
+                            [
+                                483487.06085676,
+                                4203889.94263858
+                            ]
+                        ]
+                    ]
+                ]
+            },
+            "geometry_name": "the_geom",
+            "properties": {
+                "DIADROMOS": "3",
+                "THESI": "2",
+                "SURNAME": "ΓΕΩΡΓΙΑΔΟΥ",
+                "NAME": "ΕΛΕΝΗ",
+                "FATHER_N": "ΑΛΕΞΑΝΔΡΟΣ",
+                "MOTHER_N": "ΕΥΑΓΓΕΛΙΑ",
+                "DEATH_DATE": "2014-09-11T21:00:00Z",
+                "DEATH_PLAC": "ΑΘΗΝΑ",
+                "BIRTH_DATE": "1940-08-02T22:00:00Z",
+                "AGE": 74,
+                "CATEGORY_G": "Οικογενειακός τάφος",
+                "AVAILABILI": "Όχι"
+            }
+        }
+    ],
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::2100"
+        }
+    }
+}
