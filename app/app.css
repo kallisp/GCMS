@@ -12,18 +12,17 @@ body {
   font-size: 15px;
   }
 
-  .form-group {
-    margin-bottom: 12px;
+  .table {
+    margin-bottom: 8px;
   }
 
 .form-group .form-control {
-  margin-bottom: 10px;
-  height: 35px;
-  padding: -4px -6px;
+  height: 39px;
   font-size: 13px;
   border-radius: 4px;
-  width: 80%;
-  }
+  margin-bottom: 5px;
+  margin-top: 5px
+  } 
 
   .navbar-brand {
     font-size: 20px;
@@ -71,6 +70,24 @@ select {
   bottom: 0;
  }
 
+ .basemap {
+   position: absolute;
+    margin: 1px;
+    padding: 0;
+    text-align: center;
+    left: 6.5px;
+    top: 148px;
+    width: 2.1em;
+    height: 2.1em;
+    background-color: rgba(0,60,136,0.5); 
+    border: 3px solid rgba(255,255,255,0.7);
+    border-radius: 4px;
+ }
+
+ .basemap img {
+   width: 80%;
+ }
+
  .navbar{
    margin-bottom:0;
  }
@@ -93,6 +110,7 @@ select {
   bottom: 0;
   box-shadow: 0px 20px 18px rgba(0,0,0,0.6);
   padding: 20px;
+  overflow: auto;
 }
 
 .sidebar-details-title {
@@ -102,22 +120,52 @@ select {
   margin-bottom: 10px;
 }
 
+/* .sidebar-search-right {
+  right:30%; 
+}  */
+
 .search-property {
   font-size: 12px;
   font-weight: bold;
-  text-align: right;
+  text-align: right; 
   padding-right: 10px;
-  border-right: 1px solid lightgrey;
+ }
+
+ /* label - radio - css*/
+
+ label {
+  line-height: 2.3;
+  margin-top: 3px;
+  padding-right: 10px;
+}
+
+ .table>tbody>tr>td {
+   vertical-align: middle;
  }
 
  .search-results {
    font-size: 15px;
  }
 
- .results-edit {
-  margin-top: -6px;
+ .search-results input {
+   border-radius: 3px;
+   border: 1px solid rgb(204, 201, 201);
+   padding-left: 5px;
+ }
+
+ .searchError {
+   background-color: red;
+   border-radius: 20px;
+   color: white;
+   text-align: center;
+   margin-top: 7px;
+   margin-bottom: 7px;
+ }
+
+ .btn-primary {
   margin-left: 135px;
  }
+
 .legend {
     position: fixed;
     right: 5px;
@@ -139,8 +187,12 @@ select {
   border-bottom: 1px solid rgb(204, 201, 201);
 }
 
+.ol-control button {
+  font-size: 1.3em;
+}
+
 .ol-zoom-extent {
- top: 270px;
+ top: 65px;
  }
  
 

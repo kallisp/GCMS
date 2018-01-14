@@ -14,29 +14,48 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.sidebarSearchOpen = false;
     $scope.sidebarEditOpen = false;
     $scope.results = [];
+    $scope.searchError = false;  //error when nothing is typed in search filter
+    $scope.sidebarSearchResultsOpen == false;
 
     // vars for ng-model in html
     $scope.name = null;
     $scope.surname = null;
     $scope.diadromos = null;
+    $scope.thesi = null;
+    $scope.category = null;
+    $scope.availability = null;
 
     $scope.thematicMap = "CategoryMap";
 
     $scope.toggleSearch = function () {
       $scope.sidebarSearchOpen = !$scope.sidebarSearchOpen;
+      $scope.sidebarEditOpen = false;
+      $scope.table = null;
+      $scope.searchError = false;
+      $scope.sidebarSearchResultsOpen = false;
+    }
+
+    $scope.returntoSearch = function() {
+      $scope.sidebarSearchOpen = true;
+      $scope.sidebarSearchResultsOpen = false;
+      $scope.sidebarEditOpen = false;
       $scope.table = null;
     }
 
     $scope.toggleEdit = function () {
       $scope.sidebarEditOpen = !$scope.sidebarEditOpen;
+      $scope.sidebarSearchOpen = false;
     }
 
     $scope.showDetailsFilterSearch = function (r) {
       $scope.sidebarSearchOpen = !$scope.sidebarSearchOpen;
-      $scope.table = r.properties;
+      $scope.table = r;  //r is row from ng-repeat - returns table (response.data.features) for each row of results
+      $scope.sidebarSearchResultsOpen = false;
     }
 
-    $scope.searchFilter = function () {
+      $scope.searchFilter = function () {
+
+      $scope.searchError = false;
 
       var filter = ol.format.ogc.filter;
 
@@ -70,27 +89,33 @@ angular.module('myApp.home', ['ngRoute'])
         dynamicFilter = filters[0];
       }
 
+      if (dynamicFilter == undefined) {
+        return $scope.searchError = true; // return exits function - για να μην επιστρεψει πχ κενα αποτελεσματα
+        // return alert('Παρακαλω προσθεστε τουλαχιστον 1 φιλτρο αναζήτησης');
+      }
+
       var featureRequest = new ol.format.WFS().writeGetFeature({
         srsName: 'EPSG:3857',
-        featureNS: 'http://localhost:8080/geoserver',
+        featureNS: 'geoserver',
         featurePrefix: 'GCMS',
-        featureType: ['graves'],
+        featureTypes: ['graves'],
         outputFormat: 'application/json',
-        filter: dynamicFilter
+        filter: dynamicFilter,
       });
 
       var bodySearch = new XMLSerializer().serializeToString(featureRequest);
 
-      $http.post('http://localhost:8080/geoserver/GCMS/wms', bodySearch).then(function (response) {
+      $http.post('geoserver/GCMS/wms', bodySearch).then(function (response) {  //http://localhost:8080/geoserver/GCMS/wms
         console.log(response);
         $scope.results = response.data.features
+        $scope.sidebarSearchResultsOpen = true; 
       }, function (err) {
         console.warn(err);
       })
-
     }
+
     var gmloptions = new ol.format.GML({
-      featureNS: 'http://localhost:8080/geoserver',
+      featureNS: 'geoserver',  //'http://localhost:8080/geoserver',
       featureType: 'graves',
       srsName: 'EPSG:3857'
     });
@@ -149,7 +174,6 @@ angular.module('myApp.home', ['ngRoute'])
       })
     });
 
-
     var view = new ol.View({
       center: ol.proj.transform([23.813740691981, 37.985084104141], 'EPSG:4326', 'EPSG:3857'),
       zoom: 21,
@@ -190,7 +214,7 @@ angular.module('myApp.home', ['ngRoute'])
 
       AvailabilityMapLayer.setVisible(false);
 
-      // center the map from 3857 default projection to 2100
+      // center the map from 4326 to default projection 3857
       map.getView().setCenter(ol.proj.transform([23.813740691981, 37.985084104141], 'EPSG:4326', 'EPSG:3857'));
 
       // set the extent of the map to use in var when zooms to extent
@@ -223,7 +247,7 @@ angular.module('myApp.home', ['ngRoute'])
 
           $http.get(url).then(function (response) {
             console.log(response);
-            var myData = response.data.features; // features is an array.
+            var myData = response.data.features; // features is an array and the properties (where results are stored) is its property
 
             if (myData.length > 0) { // element at index:0 (first item) has my data
               var item = myData[0];
@@ -255,3 +279,4 @@ angular.module('myApp.home', ['ngRoute'])
       map.addInteraction(selectSingleClick);
     });
   }]);
+
