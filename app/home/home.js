@@ -15,7 +15,8 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.sidebarEditOpen = false;
     $scope.results = [];
     $scope.searchError = false;  //error when nothing is typed in search filter
-    $scope.sidebarSearchResultsOpen == false;
+    $scope.sidebarSearchResultsOpen = false;
+
 
     // vars for ng-model in html
     $scope.name = null;
@@ -26,6 +27,7 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.availability = null;
 
     $scope.thematicMap = "CategoryMap";
+    $scope.basemap = "OSM";
 
     $scope.toggleSearch = function () {
       $scope.sidebarSearchOpen = !$scope.sidebarSearchOpen;
@@ -35,7 +37,7 @@ angular.module('myApp.home', ['ngRoute'])
       $scope.sidebarSearchResultsOpen = false;
     }
 
-    $scope.returntoSearch = function() {
+    $scope.returntoSearch = function () {
       $scope.sidebarSearchOpen = true;
       $scope.sidebarSearchResultsOpen = false;
       $scope.sidebarEditOpen = false;
@@ -47,13 +49,13 @@ angular.module('myApp.home', ['ngRoute'])
       $scope.sidebarSearchOpen = false;
     }
 
-    $scope.showDetailsFilterSearch = function (r) {
+    $scope.showListResults = function (r) {
       $scope.sidebarSearchOpen = !$scope.sidebarSearchOpen;
       $scope.table = r;  //r is row from ng-repeat - returns table (response.data.features) for each row of results
       $scope.sidebarSearchResultsOpen = false;
     }
 
-      $scope.searchFilter = function () {
+    $scope.searchFilter = function () {
 
       $scope.searchError = false;
 
@@ -64,15 +66,15 @@ angular.module('myApp.home', ['ngRoute'])
       var dynamicFilter = null;
 
       if ($scope.name) {
-        filters.push(filter.like('NAME', $scope.name.toUpperCase() + '*'))  //push is append for angular
+        filters.push(filter.like('name', $scope.name.toUpperCase() + '*'))  //push is append for angular
       }
 
       if ($scope.surname) {
-        filters.push(filter.like('SURNAME', $scope.surname.toUpperCase() + '*'))
+        filters.push(filter.like('surname', $scope.surname.toUpperCase() + '*'))
       }
 
       if ($scope.diadromos) {
-        filters.push(filter.equalTo('DIADROMOS', $scope.diadromos))
+        filters.push(filter.equalTo('diadromos', $scope.diadromos))
       }
 
       if (filters.length == 2) {
@@ -98,7 +100,7 @@ angular.module('myApp.home', ['ngRoute'])
         srsName: 'EPSG:3857',
         featureNS: 'geoserver',
         featurePrefix: 'GCMS',
-        featureTypes: ['graves'],
+        featureTypes: ['persons_graves'],
         outputFormat: 'application/json',
         filter: dynamicFilter,
       });
@@ -108,7 +110,7 @@ angular.module('myApp.home', ['ngRoute'])
       $http.post('geoserver/GCMS/wms', bodySearch).then(function (response) {  //http://localhost:8080/geoserver/GCMS/wms
         console.log(response);
         $scope.results = response.data.features
-        $scope.sidebarSearchResultsOpen = true; 
+        $scope.sidebarSearchResultsOpen = true;
       }, function (err) {
         console.warn(err);
       })
@@ -116,7 +118,7 @@ angular.module('myApp.home', ['ngRoute'])
 
     var gmloptions = new ol.format.GML({
       featureNS: 'geoserver',  //'http://localhost:8080/geoserver',
-      featureType: 'graves',
+      featureType: 'persons_graves',
       srsName: 'EPSG:3857'
     });
 
@@ -145,9 +147,20 @@ angular.module('myApp.home', ['ngRoute'])
         AvailabilityMapLayer.setVisible(false);
     }
 
+    // $scope.changeBasemap = function () {
+    //   if ($scope.basemap  == "GoogleMap")
+    //     googleLayer.setVisible(true);
+    //   else
+    //     googleLayer.setVisible(false);
+    // }
+
     var OSMLayer = new ol.layer.Tile({
       source: new ol.source.OSM()
     });
+
+    // var googleLayer = new olgm.layer.Google({
+    //   mapTypeId: google.maps.MapTypeId.SATELLITE
+    // });
 
     /* new ol.layer.Tile({
      source: new ol.source.TileWMS({
@@ -162,8 +175,18 @@ angular.module('myApp.home', ['ngRoute'])
       serverType: 'geoserver'
     });
 
+    var wmsSource_personsGraves = new ol.source.TileWMS({
+      url: 'geoserver/GCMS/wms',
+      params: { 'LAYERS': 'GCMS:persons_graves', 'VERSION': '1.1.1', 'TILED': true, FORMAT: 'image/png', STYLES: '' },
+      serverType: 'geoserver'
+    });
+
     var gravesLayer = new ol.layer.Tile({
       source: wmsSource
+    });
+
+    var personsGravesLayer = new ol.layer.Tile({
+      source: wmsSource_personsGraves
     });
 
     var AvailabilityMapLayer = new ol.layer.Tile({
@@ -176,11 +199,11 @@ angular.module('myApp.home', ['ngRoute'])
 
     var view = new ol.View({
       center: ol.proj.transform([23.813740691981, 37.985084104141], 'EPSG:4326', 'EPSG:3857'),
-      zoom: 21,
+      zoom: 20,
     });
 
     //we need a get function to read json file from server - in geoserver we preview the layer with WFS GeoJSON
-    $http.get('geoserver/GCMS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=GCMS:graves&maxFeatures=100&outputFormat=application%2Fjson').then(function (response) {
+    $http.get('geoserver/GCMS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=GCMS:persons_graves&maxFeatures=100&outputFormat=application%2Fjson').then(function (response) {
 
       var vectorSource = new ol.source.Vector({
         //we declare the json object in readFeatures - from the response we want only the data array of the object (response)
@@ -206,6 +229,7 @@ angular.module('myApp.home', ['ngRoute'])
             units: 'metric'
           }),
         ]),
+        //interactions: olgm.interaction.defaults(),
         loadTilesWhileInteracting: true,
         layers: [OSMLayer, gravesLayer, AvailabilityMapLayer, gravesVector],
         target: 'map',
@@ -213,6 +237,11 @@ angular.module('myApp.home', ['ngRoute'])
       })
 
       AvailabilityMapLayer.setVisible(false);
+
+      // var olGM = new olgm.OLGoogleMaps({map: map}); // map is the ol.Map instance
+      // olGM.activate();
+
+      //googleLayer.setVisible(false);
 
       // center the map from 4326 to default projection 3857
       map.getView().setCenter(ol.proj.transform([23.813740691981, 37.985084104141], 'EPSG:4326', 'EPSG:3857'));
@@ -227,18 +256,18 @@ angular.module('myApp.home', ['ngRoute'])
         className: 'ol-zoom-extent'
       });
 
-      var ZoomSlider = new ol.control.ZoomSlider({
+      /*var ZoomSlider = new ol.control.ZoomSlider({
         className: 'ol-zoom-slider'
-      });
+      });*/
 
       //add controls after the map has been created
       map.addControl(zoomToExtentControl);
-      map.addControl(ZoomSlider);
+      // map.addControl(ZoomSlider);
 
       //Get Feature Info Request - when click
       map.on('singleclick', function (evt) {
         var viewResolution = /* @type {number} */ (view.getResolution());
-        var url = wmsSource.getGetFeatureInfoUrl(
+        var url = wmsSource_personsGraves.getGetFeatureInfoUrl(
           evt.coordinate, viewResolution, 'EPSG:3857',
           { 'INFO_FORMAT': 'application/json', 'FEATURE_COUNT': 150 });
 
@@ -247,17 +276,16 @@ angular.module('myApp.home', ['ngRoute'])
 
           $http.get(url).then(function (response) {
             console.log(response);
-            var myData = response.data.features; // features is an array and the properties (where results are stored) is its property
+            $scope.results = response.data.features; // features is an array and the properties (where results are stored) is its property
 
-            if (myData.length > 0) { // element at index:0 (first item) has my data
-              var item = myData[0];
+            /*if ($scope.results.length > 0) { // element at index:0 (first item) has my data
+              var item = $scope.results[0];
               // make it available to html, through $scope
               $scope.table = item;
-              $scope.sidebarSearchOpen = false;
-            }
+          }
             else {
               $scope.table = null;
-            }
+            }*/
           }, function (err) {
             console.log(err);
 

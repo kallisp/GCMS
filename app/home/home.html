@@ -20,70 +20,71 @@
     </div>
 </nav>
 <div id="map" class="map"></div>
-<div class="basemap">
+<div class="basemap" ng-model="basemap" ng-click="changeBasemap()">
     <img src="images/layer-white.png">
 </div>
 
-<div class="sidebar" ng-show="table != null && sidebarSearchOpen == false">
+<div class="sidebar" ng-show="sidebarSearchOpen == false">  <!--table != null && -->
     <h4 class="sidebar-details-title">Πληροφορίες Θανόντος</h4>
-    <table class="table table-striped" style="width:100%">
-        <tr>
-            <td class="search-property">Διάδρομος</td>
-            <td class="search-results">{{table.properties.DIADROMOS}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Θέση</td>
-            <td class="search-results">{{table.properties.THESI}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Όνομα</td>
-            <td class="search-results">{{table.properties.NAME}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Επώνυμο</td>
-            <td class="search-results">{{table.properties.SURNAME}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Πατρώνυμο</td>
-            <td class="search-results">{{table.properties.FATHER_N}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Μητρώνυμο</td>
-            <td class="search-results">{{table.properties.MOTHER_N}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Ημερομηνία Θανάτου</td>
-            <td class="search-results">{{table.properties.DEATH_DATE | date}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Τόπος Θανάτου</td>
-            <td class="search-results">{{table.properties.DEATH_PLAC}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Ημερομηνία Γέννησης</td>
-            <td class="search-results">{{table.properties.BIRTH_DATE | date}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Ηλικία</td>
-            <td class="search-results">
-                <span ng-hide="table.properties.AGE==0">{{table.properties.AGE}}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="search-property">Κατηγορία τάφου</td>
-            <td class="search-results">{{table.properties.CATEGORY_G}}</td>
-        </tr>
-        <tr>
-            <td class="search-property">Διαθεσιμότητα</td>
-            <td>
-                <label>
-                    <!-- ΔΕΝ ΑΝΑΓΝΩΡΙΖΕΙ ΤΟ ΠΕΔΙΟ ΔΙΑΘΕΣΙΜΟΤΗΤΑ -->
-                    <input type="radio" ng-model="table.properties.AVAILABILI" name="available-details" value="Ναι"> Ναι</label>
-                <label>
-                    <input type="radio" ng-model="table.properties.AVAILABILI" name="available-details" value="Όχι"> Όχι</label>
-            </td>
-        </tr>
-    </table>
+    <div ng-repeat="r in results" ng-show="results.length>0" ng-click="showListResults(r)">
+        <table class="table table-striped" style="width:100%">
+            <tr>
+                <td class="search-property">Διάδρομος</td>
+                <td class="search-results">{{r.properties.diadromos}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Θέση</td>
+                <td class="search-results">{{r.properties.thesi}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Όνομα</td>
+                <td class="search-results">{{r.properties.name}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Επώνυμο</td>
+                <td class="search-results">{{r.properties.surname}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Πατρώνυμο</td>
+                <td class="search-results">{{r.properties.father_name}}</td>
+            </tr>
+           <!-- <tr>
+                <td class="search-property">Μητρώνυμο</td>
+                <td class="search-results">{{r.properties.mother_name}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Ημερομηνία Θανάτου</td>
+                <td class="search-results">{{r.properties.death_date}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Τόπος Θανάτου</td>
+                <td class="search-results">{{r.properties.death_place}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Ημερομηνία Γέννησης</td>
+                <td class="search-results">{{r.properties.birth_date}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Ηλικία</td>
+                <td class="search-results">
+                    <span ng-hide="r.properties.age==0">{{r.properties.age}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="search-property">Κατηγορία τάφου</td>
+                <td class="search-results">{{table.properties.category}}</td>
+            </tr>
+            <tr>
+                <td class="search-property">Διαθεσιμότητα</td>
+                <td>
+                    <label>
+                        <input type="radio" ng-model="table.properties.availability" name="available-details" value="Ναι"> Ναι</label>
+                    <label>
+                        <input type="radio" ng-model="table.properties.availability" name="available-details" value="Όχι"> Όχι</label>
+                </td>
+            </tr> -->
+        </table>
+    </div>
     <button class="btn btn-primary" ng-click="toggleEdit()">Επεξεργασία</button>
 </div>
 <!-- show search button when is true (clicked)-->
@@ -118,16 +119,20 @@
         <tr class="form-group">
             <td class="search-property">Κατηγορία</td>
             <td>
-                <input type="text" class="form-control" placeholder="Εισάγετε κατηγορία τάφου" ng-model="category">
+                <select class="form-control">
+                    <option value="category">Προσωρινός κοινός τάφος</option>
+                    <option value="category">Οικογενειακός τάφος</option>
+                    <option value="category">Θύματα πολέμου</option>
+                </select>
             </td>
         </tr>
         <tr class="form-group">
             <td class="search-property">Διαθεσιμότητα</td>
             <td>
                 <label>
-                    <input type="radio" ng-model="table.properties.AVAILABILI" name="available-edit" value="Ναι"> Ναι</label>
+                    <input type="radio" ng-model="table.properties.availability" name="available-edit" value="Ναι"> Ναι</label>
                 <label>
-                    <input type="radio" ng-model="table.properties.AVAILABILI" name="available-edit" value="Όχι"> Όχι</label>
+                    <input type="radio" ng-model="table.properties.availability" name="available-edit" value="Όχι"> Όχι</label>
             </td>
         </tr>
     </table>
@@ -163,61 +168,61 @@
 </div>
 <div class="sidebar" ng-show="sidebarSearchResultsOpen == true">
     <h4 class="sidebar-details-title">Αποτελέσματα Αναζήτησης</h4>
-    <div ng-repeat="r in results" ng-show="results.length>0" ng-click="showDetailsFilterSearch(r)">
+    <div ng-repeat="r in results" ng-show="results.length>0" ng-click="showListResults(r)">
         <table class="table table-striped" style="width:100%">
             <tr>
                 <td class="search-property">Διάδρομος</td>
-                <td class="search-results">{{r.properties.DIADROMOS}}</td>
+                <td class="search-results">{{r.properties.diadromos}}</td>
             </tr>
             <tr>
                 <td class="search-property">Θέση</td>
-                <td class="search-results">{{r.properties.THESI}}</td>
+                <td class="search-results">{{r.properties.thesi}}</td>
             </tr>
             <tr>
                 <td class="search-property">Όνομα</td>
-                <td class="search-results">{{r.properties.NAME}}</td>
+                <td class="search-results">{{r.properties.name}}</td>
             </tr>
             <tr>
                 <td class="search-property">Επώνυμο</td>
-                <td class="search-results">{{r.properties.SURNAME}}</td>
+                <td class="search-results">{{r.properties.surname}}</td>
             </tr>
             <tr>
                 <td class="search-property">Πατρώνυμο</td>
-                <td class="search-results">{{r.properties.FATHER_N}}</td>
+                <td class="search-results">{{r.properties.father_name}}</td>
             </tr>
             <tr>
                 <td class="search-property">Μητρώνυμο</td>
-                <td class="search-results">{{r.properties.MOTHER_N}}</td>
+                <td class="search-results">{{r.properties.mother_name}}</td>
             </tr>
             <tr>
                 <td class="search-property">Ημερομηνία Θανάτου</td>
-                <td class="search-results">{{r.properties.DEATH_DATE | date}}</td>
+                <td class="search-results">{{r.properties.death_date | date}}</td>
             </tr>
             <tr>
                 <td class="search-property">Τόπος Θανάτου</td>
-                <td class="search-results">{{r.properties.DEATH_PLAC}}</td>
+                <td class="search-results">{{r.properties.death_place}}</td>
             </tr>
             <tr>
                 <td class="search-property">Ημερομηνία Γέννησης</td>
-                <td class="search-results">{{r.properties.BIRTH_DATE | date}}</td>
+                <td class="search-results">{{r.properties.birth_date | date}}</td>
             </tr>
             <tr>
                 <td class="search-property">Ηλικία</td>
                 <td class="search-results">
-                    <span ng-hide="table.properties.AGE">{{r.properties.AGE}}</span>
+                    <span ng-hide="table.properties.AGE">{{r.properties.age}}</span>
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Κατηγορία τάφου</td>
-                <td class="search-results">{{r.properties.CATEGORY_G}}</td>
+                <td class="search-results">{{r.properties.category}}</td>
             </tr>
             <tr>
                 <td class="search-property">Διαθεσιμότητα</td>
                 <td>
                     <label>
-                        <input type="radio" ng-model="r.properties.AVAILABILI" name="available-results" value="Ναι"> Ναι</label>
+                        <input type="radio" ng-model="r.properties.availability" name="available-results" value="Ναι"> Ναι</label>
                     <label>
-                        <input type="radio" ng-model="r.properties.AVAILABILI" name="available-results" value="Όχι"> Όχι</label>
+                        <input type="radio" ng-model="r.properties.availability" name="available-results" value="Όχι"> Όχι</label>
                 </td>
             </tr>
         </table>
@@ -231,67 +236,73 @@
             <tr>
                 <td class="search-property">Διάδρομος</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε αριθμό διαδρόμου" ng-model="table.properties.DIADROMOS">
+                    <input type="text" placeholder="Εισάγετε αριθμό διαδρόμου" ng-model="table.properties.diadromos">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Θέση</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε θέση" ng-model="table.properties.THESI">
+                    <input type="text" placeholder="Εισάγετε θέση" ng-model="table.properties.thesi">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Όνομα</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε όνομα" ng-model="table.properties.NAME">
+                    <input type="text" placeholder="Εισάγετε όνομα" ng-model="table.properties.name">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Επώνυμο</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε επώνυμο" ng-model="table.properties.SURNAME">
+                    <input type="text" placeholder="Εισάγετε επώνυμο" ng-model="table.properties.surname">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Πατρώνυμο</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε πατρώνυμο" ng-model="table.properties.FATHER_N">
+                    <input type="text" placeholder="Εισάγετε πατρώνυμο" ng-model="table.properties.father_name">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Μητρώνυμο</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε μητρώνυμο" ng-model="table.properties.MOTHER_N">
+                    <input type="text" placeholder="Εισάγετε μητρώνυμο" ng-model="table.properties.mother_name">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Ημερομηνία Θανάτου</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε ημερομηνία θανάτου" ng-model="table.properties.DEATH_DATE">
+                    <input type="text" placeholder="Εισάγετε ημερομηνία θανάτου" ng-model="table.properties.death_date">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Τόπος Θανάτου</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε τόπο θανάτου" ng-model="table.properties.DEATH_PLAC">
+                    <input type="text" placeholder="Εισάγετε τόπο θανάτου" ng-model="table.properties.death_place">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Ημερομηνία Γέννησης</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε ημερομηνία γέννησης" ng-model="table.properties.BIRTH_DATE">
+                    <input type="text" placeholder="Εισάγετε ημερομηνία γέννησης" ng-model="table.properties.birth_date">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Ηλικία</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε ηλικία" ng-model="table.properties.AGE">
+                    <input type="text" placeholder="Εισάγετε ηλικία" ng-model="table.properties.age">
                 </td>
             </tr>
             <tr>
                 <td class="search-property">Κατηγορία τάφου</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε κατηγορία τάφου" ng-model="table.properties.CATEGORY_G">
+                    <select class="form-control">
+                        <option>{{table.properties.category}}</option>
+                        <option value="category">Προσωρινός κοινός τάφος</option>
+                        <option value="category">Οικογενειακός τάφος</option>
+                        <option value="category">Θύματα πολέμου</option>
+                    </select>
+                    <!-- <input type="text" placeholder="Εισάγετε κατηγορία τάφου" ng-model="table.properties.category"> -->
                 </td>
             </tr>
             <tr>
@@ -299,9 +310,9 @@
                 <td class="search-results">
                     <!-- το value στο radio αντιστοιχεί στην τιμή του row στον πίνακα - attribute table of shapefile -->
                     <label>
-                        <input type="radio" ng-model="table.properties.AVAILABILI" name="available" value="Ναι"> Ναι</label>
+                        <input type="radio" ng-model="table.properties.availability" name="available" value="Ναι"> Ναι</label>
                     <label>
-                        <input type="radio" ng-model="table.properties.AVAILABILI" name="available" value="Όχι"> Όχι</label>
+                        <input type="radio" ng-model="table.properties.availability" name="available" value="Όχι"> Όχι</label>
                 </td>
             </tr>
         </table>
