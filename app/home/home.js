@@ -16,6 +16,7 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.results = [];
     $scope.searchError = false;  //error when nothing is typed in search filter
     $scope.sidebarSearchResultsOpen = false;
+    $scope.whenMaponClick = true;
 
 
     // vars for ng-model in html
@@ -35,6 +36,7 @@ angular.module('myApp.home', ['ngRoute'])
       $scope.table = null;
       $scope.searchError = false;
       $scope.sidebarSearchResultsOpen = false;
+      $scope.whenMaponClick = false;
     }
 
     $scope.returntoSearch = function () {
@@ -49,8 +51,17 @@ angular.module('myApp.home', ['ngRoute'])
       $scope.sidebarSearchOpen = false;
     }
 
+    $scope.closeSidebar = function () {
+      $scope.table = !$scope.table;
+      $scope.sidebarSearchResultsOpen = true;
+    }
+
+    $scope.closeEditSidebar = function () {
+      $scope.sidebarEditOpen = !$scope.sidebarEditOpen;
+    }
+
     $scope.showListResults = function (r) {
-      $scope.sidebarSearchOpen = !$scope.sidebarSearchOpen;
+      $scope.sidebarSearchOpen = false;
       $scope.table = r;  //r is row from ng-repeat - returns table (response.data.features) for each row of results
       $scope.sidebarSearchResultsOpen = false;
     }
@@ -266,6 +277,7 @@ angular.module('myApp.home', ['ngRoute'])
 
       //Get Feature Info Request - when click
       map.on('singleclick', function (evt) {
+        $scope.whenMaponClick = true;
         var viewResolution = /* @type {number} */ (view.getResolution());
         var url = wmsSource_personsGraves.getGetFeatureInfoUrl(
           evt.coordinate, viewResolution, 'EPSG:3857',
@@ -276,16 +288,15 @@ angular.module('myApp.home', ['ngRoute'])
 
           $http.get(url).then(function (response) {
             console.log(response);
-            $scope.results = response.data.features; // features is an array and the properties (where results are stored) is its property
-
-            /*if ($scope.results.length > 0) { // element at index:0 (first item) has my data
-              var item = $scope.results[0];
+            if (response.data.features.length > 0) { // element at index:0 (first item) has my data
+              $scope.results = response.data.features; // features is an array and the properties (where results are stored) is its property
+              $scope.sidebarSearchResultsOpen = true;
               // make it available to html, through $scope
-              $scope.table = item;
-          }
+            }
             else {
-              $scope.table = null;
-            }*/
+              $scope.sidebarSearchResultsOpen = false;
+              $scope.sidebarSearchOpen = false;
+            }
           }, function (err) {
             console.log(err);
 

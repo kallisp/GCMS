@@ -21,7 +21,6 @@
     "postinstall": "bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
-    "prestart": "npm install",
     "start": "node app.js",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
@@ -34,6 +33,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "ol3-google-maps": "^0.17.0"
+    "ol3-google-maps": "^0.17.0",
+    "pg": "^7.4.1"
   }
 }
