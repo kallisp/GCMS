@@ -171,6 +171,10 @@ select {
   margin-left: 155px;
  }
 
+ .margin-left {
+  margin-left: 120px;
+ }
+
 .legend {
     position: fixed;
     right: 5px;
@@ -198,6 +202,17 @@ select {
 
 .ol-zoom-extent {
  top: 65px;
+ }
+
+ .zoomExtentIcon {
+  position: absolute;
+  margin: 1px;
+  padding: 0;
+  text-align: center;
+  left: 10.8px;
+  top: 117px;
+  /* width: 2.1em;
+  height: 2.1em;*/
  }
  
 

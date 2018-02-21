@@ -1,66 +1,124 @@
+//  first time only - insert  "prestart": "npm install" in package.json
+
 const express = require('express')
 var proxy = require('http-proxy-middleware');
+var bodyParser = require('body-parser');
+
 const app = express()
 const { Client } = require('pg')
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'GCMS',
-    password: 'kall1kall1',
-    port: 5432,
+  user: 'postgres',
+  host: 'localhost',
+  database: 'GCMS',
+  password: 'kall1kall1',
+  port: 5432,
 })
 
-client.connect(function(err){
-    if (err) {
-      console.error('connection error', err.stack)
-    } else {
-      console.log('connected')
-    }
-  })
-
-/*const query = 'SELECT diadromos, thesi, surname, name, father_name, mother_name, birth_date, death_date, age, death_place, category, availability' FROM graves, persons, persons_in_grave
-WHERE ((graves.gid = persons_in_grave.gid) AND (persons.pid = persons_in_grave.pid));*/
+client.connect(function (err) {
+  if (err) {
+    console.error('connection error', err.stack)
+  } else {
+    console.log('connected')
+  }
+})
 
 app.use('/', express.static('app'))
 app.use('/geoserver', proxy({ target: 'http://localhost:8080', changeOrigin: true }));
+app.use(bodyParser.json()); // for parsing application/json
 
-app.get('/persons',function(request, response) {
-  client.query('SELECT * FROM persons', function(err,results) {
+app.get('/persons', function (request, response) {
+  client.query('SELECT * FROM persons', function (err, results) {
     response.json(results);
   })
 });
 
-app.get('/persons_graves',function(request, response) {
-  client.query('SELECT diadromos, thesi, surname, name, father_name, mother_name, birth_date, death_date, age, death_place, category, availability \
-                FROM graves, persons, persons_in_grave \
-                WHERE ((graves.gid = persons_in_grave.gid) AND (persons.pid = persons_in_grave.pid))', function(err,results) {
+app.get('/persons_graves', function (request, response) {
+  console.log(request.param);
+  var query = "SELECT graves.gid,persons.pid,persons_in_grave.pgid,diadromos,thesi,category,availability,grave_level,entry_date,exit_date,name,surname,father_name,mother_name,birth_date,death_date,age,death_place,geom\
+  FROM graves\
+  LEFT JOIN persons_in_grave ON graves.gid = persons_in_grave.gid\
+  LEFT JOIN persons ON persons.pid = persons_in_grave.pid \
+  WHERE diadromos='"+ request.param('diadromos') + "' " + "OR thesi='" + request.param('thesi') + "'";
+
+  console.log(query);
+
+  client.query(query, function (err, results) {
+    if (err != undefined) {
+      return response.status(500).send(err);
+    }
     response.json(results);
   })
 });
- 
-// 
 
-//app.post('/persons', function (request, response) {
+app.post('/persons_graves', function (request, response) {
+  // console.log(request.body) //εμφανιση του body από το request
+  var updatePersonsQuery = "UPDATE persons SET name='" + request.body.name +
+    "', surname='" + request.body.surname +
+    "', father_name='" + request.body.father_name +
+    "', mother_name='" + request.body.mother_name + "'" +
+    // ", birth_date=" + request.body.birth_date +
+    // ", death_date=" + request.body.death_date +
+    ", age=" + request.body.age +
+    ", death_place='" + request.body.death_place +
+    "' WHERE pid=" + request.body.pid;
 
-    /// ... code
+  var updateGravesQuery = "UPDATE graves SET diadromos='" + request.body.diadromos +
+    "', thesi='" + request.body.thesi +
+    "', category='" + request.body.category +
+    "', availability='" + request.body.availability +
+    "' WHERE gid=" + request.body.gid;
 
-    //..
+  var updatePersonsInGraveQuery = "UPDATE persons_in_grave SET grave_level=" + request.body.grave_level +
+    // ", entry_date=" + request.body.entry_date + ", exit_date=" + request.body.exit_date +
+    " WHERE pgid= " + request.body.pgid;
 
-    // client.query(query, (err, res) => {
-    //     console.log(err ? err.stack : res.rows[0].message) // Hello World!
-
-    //     response.send('posted in /persons');
-
-
-    //     client.end()
-    //   })
+  console.log(updatePersonsQuery)
+  // console.log(updateGravesQuery)
+  console.log(updatePersonsInGraveQuery)
 
 
-///*});
+  client.query(updateGravesQuery, function (err, results) {
 
-//app.put('/persons', function (request, response) {
+    if (err != undefined) {
+      console.warn(err);
+      return response.status(500).send(err);;
+    }
 
-   // response.json({ name: 'mike' });
-//});
+    client.query(updatePersonsQuery, function (err, results) {
+
+      if (err != undefined) {
+        console.warn(err);
+        return response.status(500).send(err);;
+      }
+
+      client.query(updatePersonsInGraveQuery, function (err, results) {
+
+        if (err != undefined) {
+          console.warn(err);
+          return response.status(500).send(err);
+        }
+        return response.status(200).end();
+      })
+    })
+  })
+});
+
+app.get('/grave_history', function (request, response) {
+  console.log(request.param);
+  var query = "SELECT graves.gid,persons.pid,persons_in_grave.pgid,diadromos,thesi,category,availability,grave_level,entry_date,exit_date,name,surname,father_name,mother_name,birth_date,death_date,age,death_place,geom\
+    FROM graves\
+    LEFT JOIN persons_in_grave ON graves.gid = persons_in_grave.gid\
+    LEFT JOIN persons ON persons.pid = persons_in_grave.pid \
+    WHERE exit_date IS NOT NULL AND graves.gid = " + request.param('gid') + " ORDER BY entry_date ASC";
+
+  console.log(query);
+
+  client.query(query, function (err, results) {
+    if (err != undefined) {
+      return response.status(500).send(err);
+    }
+    response.json(results);
+  })
+});
 
 app.listen(8000, () => console.log('Example app listening on port 8000!'))

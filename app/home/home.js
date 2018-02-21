@@ -14,9 +14,11 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.sidebarSearchOpen = false;
     $scope.sidebarEditOpen = false;
     $scope.results = [];
+    $scope.historyResults = [];
     $scope.searchError = false;  //error when nothing is typed in search filter
     $scope.sidebarSearchResultsOpen = false;
     $scope.whenMaponClick = true;
+    $scope.sidebarHistoryResultsOpen = false;
 
 
     // vars for ng-model in html
@@ -26,6 +28,8 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.thesi = null;
     $scope.category = null;
     $scope.availability = null;
+    $scope.exit_date = null;
+    $scope.entry_date = null;
 
     $scope.thematicMap = "CategoryMap";
     $scope.basemap = "OSM";
@@ -62,7 +66,13 @@ angular.module('myApp.home', ['ngRoute'])
 
     $scope.showListResults = function (r) {
       $scope.sidebarSearchOpen = false;
-      $scope.table = r;  //r is row from ng-repeat - returns table (response.data.features) for each row of results
+      $scope.sidebarHistoryResultsOpen = false;
+      if (r.properties != undefined) {
+        $scope.table = r;  //r is row from ng-repeat - returns table (response.data.features) for each row of results 
+      }
+      else {
+        $scope.table = { properties: r };
+      }
       $scope.sidebarSearchResultsOpen = false;
     }
 
@@ -70,61 +80,113 @@ angular.module('myApp.home', ['ngRoute'])
 
       $scope.searchError = false;
 
-      var filter = ol.format.ogc.filter;
+      //   var filter = ol.format.ogc.filter;
 
-      var filters = [];
+      //   var filters = [];
 
-      var dynamicFilter = null;
+      //   var dynamicFilter = null;
 
-      if ($scope.name) {
-        filters.push(filter.like('name', $scope.name.toUpperCase() + '*'))  //push is append for angular
-      }
+      //   if ($scope.name) {
+      //     filters.push(filter.like('name', $scope.name.toUpperCase() + '*'))  //push is append for angular
+      //   }
 
-      if ($scope.surname) {
-        filters.push(filter.like('surname', $scope.surname.toUpperCase() + '*'))
-      }
+      //   if ($scope.surname) {
+      //     filters.push(filter.like('surname', $scope.surname.toUpperCase() + '*'))
+      //   }
 
-      if ($scope.diadromos) {
-        filters.push(filter.equalTo('diadromos', $scope.diadromos))
-      }
+      //   if ($scope.diadromos) {
+      //     filters.push(filter.equalTo('diadromos', $scope.diadromos))
+      //   }
 
-      if (filters.length == 2) {
-        dynamicFilter = filter.or(
-          filters[0], filters[1]
-        )
-      }
-      else if (filters.length == 3) {
-        dynamicFilter = filter.οr(
-          filters[0], filters[1], filters[2]
-        )
-      }
-      else {
-        dynamicFilter = filters[0];
-      }
+      //   if (filters.length == 2) {
+      //     dynamicFilter = filter.or(
+      //       filters[0], filters[1]
+      //     )
+      //   }
+      //   else if (filters.length == 3) {
+      //     dynamicFilter = filter.οr(
+      //       filters[0], filters[1], filters[2]
+      //     )
+      //   }
+      //   else {
+      //     dynamicFilter = filters[0];
+      //   }
 
-      if (dynamicFilter == undefined) {
-        return $scope.searchError = true; // return exits function - για να μην επιστρεψει πχ κενα αποτελεσματα
-        // return alert('Παρακαλω προσθεστε τουλαχιστον 1 φιλτρο αναζήτησης');
-      }
+      //   if (dynamicFilter == undefined) {
+      //     return $scope.searchError = true; // return exits function - για να μην επιστρεψει πχ κενα αποτελεσματα
+      //     // return alert('Παρακαλω προσθεστε τουλαχιστον 1 φιλτρο αναζήτησης');
+      //   }
 
-      var featureRequest = new ol.format.WFS().writeGetFeature({
-        srsName: 'EPSG:3857',
-        featureNS: 'geoserver',
-        featurePrefix: 'GCMS',
-        featureTypes: ['persons_graves'],
-        outputFormat: 'application/json',
-        filter: dynamicFilter,
-      });
+      //   var featureRequest = new ol.format.WFS().writeGetFeature({
+      //     srsName: 'EPSG:3857',
+      //     featureNS: 'geoserver',
+      //     featurePrefix: 'GCMS',
+      //     featureTypes: ['persons_graves'],
+      //     outputFormat: 'application/json',
+      //     filter: dynamicFilter,
+      //   });
 
-      var bodySearch = new XMLSerializer().serializeToString(featureRequest);
+      //   var bodySearch = new XMLSerializer().serializeToString(featureRequest);
 
-      $http.post('geoserver/GCMS/wms', bodySearch).then(function (response) {  //http://localhost:8080/geoserver/GCMS/wms
+      $http(
+        {
+          method: 'GET',
+          url: '/persons_graves',
+          params: {
+            diadromos: $scope.diadromos,
+            thesi: $scope.thesi,
+            availability: $scope.availability,
+            category: $scope.category,
+            name: $scope.name,
+            surname: $scope.surname
+          }
+        }
+      ).then(function (response) {
         console.log(response);
-        $scope.results = response.data.features
+        $scope.results = response.data.rows;
         $scope.sidebarSearchResultsOpen = true;
-      }, function (err) {
-        console.warn(err);
-      })
+      },
+        function (err) {
+          console.warn(err);
+          alert("Παρουσιάστηκε σφάλμα κατά την αναζήτηση. Προσπαθήστε ξανά!")
+        }
+        )
+
+      //   $http.post('geoserver/GCMS/wms', bodySearch).then(function (response) {  //http://localhost:8080/geoserver/GCMS/wms
+      //     console.log(response);
+      //     $scope.results = response.data.features
+      //     $scope.sidebarSearchResultsOpen = true;
+      //   }, function (err) {
+      //     console.warn(err);
+      //   })
+    }
+
+    $scope.graveHistory = function () {
+      var grave_id = null;
+      if ($scope.results.length>0) {
+         grave_id = $scope.results[0].properties.gid;
+      }
+
+      $scope.searchError = false;
+
+      $http(
+        {
+          method: 'GET',
+          url: '/grave_history',
+          params: {
+            gid : grave_id
+        }
+        }
+      ).then(function (response) {
+        console.log(response);
+        $scope.historyResults = response.data.rows;
+        $scope.sidebarHistoryResultsOpen = true;
+      },
+        function (err) {
+          console.warn(err);
+          alert("Παρουσιάστηκε σφάλμα. Προσπαθήστε ξανά!")
+        }
+        )
     }
 
     var gmloptions = new ol.format.GML({
@@ -135,18 +197,23 @@ angular.module('myApp.home', ['ngRoute'])
 
     // need to give WRITE access to workspace in Geoserver (Security-Data) to enable the update action
     $scope.editFeatures = function (action, table) {
-      if (action == 'update') {
-        var feature = new ol.Feature(table.properties)
-        feature.setId(table.id);
-        var node = new ol.format.WFS().writeTransaction(null, [feature], null, gmloptions);
-      }
-      var bodyEdit = new XMLSerializer().serializeToString(node);
+      //if (action == 'update') {
 
-      $http.post('geoserver/GCMS/wms', bodyEdit).then(function (response) {
+      // var feature = new ol.Feature(table.properties)
+      // feature.setId(table.id);
+      // var node = new ol.format.WFS().writeTransaction(null, [feature], null, gmloptions);
+      //}
+      //  var bodyEdit = new XMLSerializer().serializeToString(node);
+
+      // put,post (url,body -- json που στελνω στον server)
+
+      $http.post('/persons_graves', table.properties, { headers: { 'Content-Type': 'application/json' } }).then(function (response) {
         console.log(response);
+        alert("Αποθηκεύτηκε επιτυχώς");
       },
         function (err) {
           console.warn(err);
+          alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!")
         }
       )
     }
@@ -261,8 +328,12 @@ angular.module('myApp.home', ['ngRoute'])
 
       var extent = ol.proj.transformExtent([23.813540691981, 37.98493284104141, 23.813803222295466, 37.98522795287264], "EPSG:4326", "EPSG:3857");
 
+      var zoomExtentSpan = document.createElement("span");
+      zoomExtentSpan.className = "zoomExtentIcon";
+
       var zoomToExtentControl = new ol.control.ZoomToExtent({
         tipLabel: 'Zoom to extent',
+        label: zoomExtentSpan,
         extent: extent,
         className: 'ol-zoom-extent'
       });
@@ -278,6 +349,7 @@ angular.module('myApp.home', ['ngRoute'])
       //Get Feature Info Request - when click
       map.on('singleclick', function (evt) {
         $scope.whenMaponClick = true;
+        //map.getView().setZoom(map.getView().getZoom()+1);
         var viewResolution = /* @type {number} */ (view.getResolution());
         var url = wmsSource_personsGraves.getGetFeatureInfoUrl(
           evt.coordinate, viewResolution, 'EPSG:3857',
@@ -296,7 +368,9 @@ angular.module('myApp.home', ['ngRoute'])
             else {
               $scope.sidebarSearchResultsOpen = false;
               $scope.sidebarSearchOpen = false;
+              $scope.table = null;
             }
+            $scope.sidebarHistoryResultsOpen = false;
           }, function (err) {
             console.log(err);
 
