@@ -121,4 +121,49 @@ app.get('/grave_history', function (request, response) {
   })
 });
 
+// app.post('/insert_person', function (request, response) {
+//   var insertPersonsQuery = "INSERT INTO persons (surname,name,father_name,mother_name,birth_date,death_date,age,death_place) VALUES '" + request.body.surname +
+//     "', '" + request.body.name + "', '" + request.body.father_name + "', '" + request.body.mother_name + "', " + request.body.birth_date + ", " + request.body.death_date + 
+//     ", " + request.body.age + ", '" + request.body.death_place + "'";
+
+//     var updateGravesQuery = "UPDATE graves SET diadromos='" + request.body.diadromos +
+//     "', thesi='" + request.body.thesi +
+//     "', category='" + request.body.category +
+//     "', availability='" + request.body.availability +
+//     "' WHERE gid=" + request.body.gid;
+
+//   var insertPersonsInGraveQuery = "INSERT INTO persons_in_grave (grave_level,entry_date,exit_date) VALUES " + request.body.grave_level + ", entry_date=" + request.body.entry_date + ", exit_date=" + request.body.exit_date +
+//     " WHERE pgid= " + request.body.pgid;
+
+//   console.log(insertPersonsQuery)
+//   // console.log(updateGravesQuery)
+//   console.log(insertPersonsInGraveQuery)
+
+
+//   client.query(insertPersonsQuery, function (err, results) {
+
+//     if (err != undefined) {
+//       console.warn(err);
+//       return response.status(500).send(err);;
+//     }
+
+//     client.query(updateGravesQuery, function (err, results) {
+
+//       if (err != undefined) {
+//         console.warn(err);
+//         return response.status(500).send(err);;
+//       }
+
+//       client.query(insertPersonsInGraveQuery, function (err, results) {
+
+//         if (err != undefined) {
+//           console.warn(err);
+//           return response.status(500).send(err);
+//         }
+//         return response.status(200).end();
+//       })
+//     })
+//   })
+// });
+
 app.listen(8000, () => console.log('Example app listening on port 8000!'))

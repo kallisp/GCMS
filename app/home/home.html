@@ -56,7 +56,7 @@
         </tr>
         <tr>
             <td class="search-property">Ημερομηνία Θανάτου</td>
-            <td class="search-results">{{table.properties.death_date}}</td>
+            <td class="search-results">{{table.properties.death_date | date: "dd/MM/yyyy"}}</td>
         </tr>
         <tr>
             <td class="search-property">Τόπος Θανάτου</td>
@@ -64,7 +64,7 @@
         </tr>
         <tr>
             <td class="search-property">Ημερομηνία Γέννησης</td>
-            <td class="search-results">{{table.properties.birth_date}}</td>
+            <td class="search-results">{{table.properties.birth_date | date: "dd/MM/yyyy"}}</td>
         </tr>
         <tr>
             <td class="search-property">Ηλικία</td>
@@ -143,7 +143,8 @@
     <button type="submit" class="btn btn-primary" ng-click='searchFilter()'>Αναζήτηση</button>
 </div>
 <div class="sidebar" ng-show="sidebarSearchResultsOpen == true">
-    <h4 class="sidebar-details-title">Αποτελέσματα Αναζήτησης</h4>
+    <h4 class="sidebar-details-title" ng-hide="whenMaponClick== true">Αποτελέσματα Αναζήτησης</h4>
+    <h4 class="sidebar-details-title" ng-show="whenMaponClick== true">Λίστα Ενoίκων Θέσης</h4>
     <div ng-show="results.length>0">
         <table class="table table-striped" style="width:100%">
             <tr>
@@ -162,7 +163,7 @@
     <button class="btn btn-primary" ng-click="graveHistory()" ng-show="whenMaponClick== true">Ιστορικό τάφου</button>
 </div>
 <div class="sidebar" ng-show="sidebarHistoryResultsOpen == true">
-    <h4 class="sidebar-details-title">Ιστορικό τάφου</h4>
+    <h4 class="sidebar-details-title">Ιστορικό Tάφου</h4>
     <table class="table table-striped" style="width:100%">
         <tr>
             <td class="search-property text-left">Ημερομηνία εισαγωγής</td>
@@ -171,17 +172,18 @@
             <td class="search-property text-left">Όνομα</td>
         </tr>
         <tr ng-repeat="r in historyResults" ng-click="showListResults(r)">
-            <td class="search-results">{{r.entry_date | date}}</td>
-            <td class="search-results">{{r.exit_date | date}}</td>
+            <td class="search-results">{{r.entry_date | date: "dd/MM/yyyy"}}</td>
+            <td class="search-results">{{r.exit_date | date: "dd/MM/yyyy"}}</td>
             <td class="search-results">{{r.surname}}</td>
             <td class="search-results">{{r.name}}</td>
         </tr>
     </table>
-</div> 
+    <button class="btn btn-primary" ng-click="closeHistoryResultsSidebar()">Επιστροφή</button>
+</div>
 
-<div class="sidebar" ng-show="sidebarEditOpen == true">
-    <h4 class="sidebar-details-title">Eπεξεργασία αντικειμένου</h4>
-    <b ng-show="table == null">Παρακαλώ επιλέξτε αντικείμενο προς επεξεργασία</b>
+<div class="sidebar" ng-show="sidebarEditOpen == true || sidebarInsertOpen == true">
+    <h4 class="sidebar-details-title">Στοιχεία επεξεργασίας</h4>
+    <b ng-show="table == null">Παρακαλώ επιλέξτε τον τάφο εισαγωγής του νεκρού</b>
     <form>
         <table class="table table-striped" style="width:100%">
             <tr>
@@ -235,7 +237,16 @@
             <tr>
                 <td class="search-property">Ημερομηνία Γέννησης</td>
                 <td class="search-results">
-                    <input type="text" placeholder="Εισάγετε ημερομηνία γέννησης" ng-model="table.properties.birth_date">
+                        <p class="input-group">
+                                <input type="text"  placeholder="Εισάγετε ημερομηνία γέννησης" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="table.properties.birth_date" is-open="popup1.opened" datepicker-options="dateOptions"
+                                    ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open1()">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                    <!-- <input type="text" placeholder="Εισάγετε ημερομηνία γέννησης" ng-model="table.properties.birth_date"> -->
                 </td>
             </tr>
             <tr>
@@ -253,7 +264,6 @@
                         <option value="Οικογενειακός τάφος">Οικογενειακός τάφος</option>
                         <option value="Θύματα πολέμου">Θύματα πολέμου</option>
                     </select>
-                    <!-- <input type="text" placeholder="Εισάγετε κατηγορία τάφου" ng-model="table.properties.category"> -->
                 </td>
             </tr>
             <tr>
@@ -267,18 +277,47 @@
                 </td>
             </tr>
         </table>
+        <!-- <button class="btn btn-primary margin-left" ng-click="insertFeatures('insert',table)" ng-show="sidebarInsertOpen == true">Αποθήκευση</button> -->
         <button type="submit" class="btn btn-primary margin-left" ng-click="editFeatures('update',table)">Αποθήκευση</button>
         <button class="btn btn-primary margin-left" style="margin-left:10px" ng-click="closeEditSidebar()">Κλείσιμο</button>
     </form>
 </div>
 <!-- ng-class: set/append as class the left part of : ONLY IF the right part of : is true -->
-<div class="legend" ng-class="{ 'legend-right' : ( table != null  || sidebarEditOpen == true || sidebarSearchOpen == true || sidebarSearchResultsOpen == true) }"
+<div class="legend" ng-class="{ 'legend-right' : ( table != null  || sidebarEditOpen == true || sidebarSearchOpen == true || sidebarSearchResultsOpen == true || sidebarInsertOpen == true) }"
     ng-hide="thematicMap == 'AvailabilityMap'">
     <h4 class="legend-title">Κατηγορία Τάφων</h4>
     <img src="geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=graves">
 </div>
-<div class="legend" ng-class="{ 'legend-right' : ( table != null  || sidebarEditOpen == true || sidebarSearchOpen == true || sidebarSearchResultsOpen == true) }"
+<div class="legend" ng-class="{ 'legend-right' : ( table != null  || sidebarEditOpen == true || sidebarSearchOpen == true || sidebarSearchResultsOpen == true || sidebarInsertOpen == true) }"
     ng-show="thematicMap == 'AvailabilityMap'">
     <h4 class="legend-title">Διαθεσιμότητα</h4>
     <img src="geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=50&HEIGHT=30&LAYER=graves2">
 </div>
+
+<!-- html for the controller -ModalDemoCtrl- from Bootstrap Angular Ui -->
+<div ng-controller="HomeCtrl as $ctrl" class="modal-demo">
+    <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-body" id="modal-body">
+                <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Κλείσιμο</button>
+        </div>
+    </script>
+</div>
+
+<!-- html for the controller -DatepickerPopupDemoCtrl- from Bootstrap Angular Ui -->
+<style>
+    .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+    }
+
+    .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+    }
+</style>

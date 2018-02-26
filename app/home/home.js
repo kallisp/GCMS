@@ -9,10 +9,12 @@ angular.module('myApp.home', ['ngRoute'])
     });
   }])
 
-  .controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
+
+  .controller('HomeCtrl', ['$scope', '$http', '$uibModal', function ($scope, $http, $uibModal) {
 
     $scope.sidebarSearchOpen = false;
     $scope.sidebarEditOpen = false;
+    $scope.sidebarInsertOpen = false;
     $scope.results = [];
     $scope.historyResults = [];
     $scope.searchError = false;  //error when nothing is typed in search filter
@@ -51,6 +53,7 @@ angular.module('myApp.home', ['ngRoute'])
     }
 
     $scope.toggleEdit = function () {
+      $scope.sidebarInsertOpen = !$scope.sidebarInsertOpen;
       $scope.sidebarEditOpen = !$scope.sidebarEditOpen;
       $scope.sidebarSearchOpen = false;
     }
@@ -62,6 +65,11 @@ angular.module('myApp.home', ['ngRoute'])
 
     $scope.closeEditSidebar = function () {
       $scope.sidebarEditOpen = !$scope.sidebarEditOpen;
+      $scope.sidebarInsertOpen = !$scope.sidebarInsertOpen;
+    }
+
+    $scope.closeHistoryResultsSidebar = function () {
+      $scope.sidebarHistoryResultsOpen = !$scope.sidebarHistoryResultsOpen;
     }
 
     $scope.showListResults = function (r) {
@@ -76,9 +84,45 @@ angular.module('myApp.home', ['ngRoute'])
       $scope.sidebarSearchResultsOpen = false;
     }
 
+    // create function to open the modal from Bootstrap Angular Ui
+
+    function openModal() {
+      var parentSelector = null;
+      var parentElem = parentSelector ?
+        angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
+      var modalInstance = $uibModal.open({
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'myModalContent.html',
+        controller: function ($uibModalInstance) {  // controller for the Modal - from Bootstrap Angular Ui
+          var $ctrl = this;
+          // $ctrl.items = items;
+          // $ctrl.selected = {
+          //   item: $ctrl.items[0]
+          // };
+
+          $ctrl.ok = function () {
+            $uibModalInstance.close();
+          };
+
+          $ctrl.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+          };
+        },
+        controllerAs: '$ctrl',
+        size: 'sm',
+        // resolve: {
+        //   items: function () {
+        //     return $ctrl.items;
+        //   }
+        // }
+      });
+    }
+
     $scope.searchFilter = function () {
 
       $scope.searchError = false;
+
 
       //   var filter = ol.format.ogc.filter;
 
@@ -145,10 +189,15 @@ angular.module('myApp.home', ['ngRoute'])
         console.log(response);
         $scope.results = response.data.rows;
         $scope.sidebarSearchResultsOpen = true;
+        if ($scope.results.length == 0) {
+          openModal();  // create function to open modal instead of alert
+          // alert("Δε βρέθηκαν αποτελέσματα. Δοκιμάστε με άλλο φίλτρο αναζήτησης!")
+        }
       },
         function (err) {
           console.warn(err);
-          alert("Παρουσιάστηκε σφάλμα κατά την αναζήτηση. Προσπαθήστε ξανά!")
+          openModal();
+          // alert("Παρουσιάστηκε σφάλμα κατά την αναζήτηση. Προσπαθήστε ξανά!")
         }
         )
 
@@ -163,8 +212,8 @@ angular.module('myApp.home', ['ngRoute'])
 
     $scope.graveHistory = function () {
       var grave_id = null;
-      if ($scope.results.length>0) {
-         grave_id = $scope.results[0].properties.gid;
+      if ($scope.results.length > 0) {
+        grave_id = $scope.results[0].properties.gid; //για να πάρει το gid του συγκεκριμένου τάφου
       }
 
       $scope.searchError = false;
@@ -174,8 +223,8 @@ angular.module('myApp.home', ['ngRoute'])
           method: 'GET',
           url: '/grave_history',
           params: {
-            gid : grave_id
-        }
+            gid: grave_id
+          }
         }
       ).then(function (response) {
         console.log(response);
@@ -184,7 +233,8 @@ angular.module('myApp.home', ['ngRoute'])
       },
         function (err) {
           console.warn(err);
-          alert("Παρουσιάστηκε σφάλμα. Προσπαθήστε ξανά!")
+          openModal();
+          // alert("Παρουσιάστηκε σφάλμα. Προσπαθήστε ξανά!")
         }
         )
     }
@@ -197,6 +247,7 @@ angular.module('myApp.home', ['ngRoute'])
 
     // need to give WRITE access to workspace in Geoserver (Security-Data) to enable the update action
     $scope.editFeatures = function (action, table) {
+
       //if (action == 'update') {
 
       // var feature = new ol.Feature(table.properties)
@@ -209,11 +260,35 @@ angular.module('myApp.home', ['ngRoute'])
 
       $http.post('/persons_graves', table.properties, { headers: { 'Content-Type': 'application/json' } }).then(function (response) {
         console.log(response);
-        alert("Αποθηκεύτηκε επιτυχώς");
+        openModal();
+        //alert("Αποθηκεύτηκε επιτυχώς");
       },
         function (err) {
           console.warn(err);
-          alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!")
+          openModal();
+          //alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!")
+        }
+      )
+    }
+
+    $scope.insertFeatures = function (action, table) {
+      $scope.sidebarInsertOpen = true;
+      var grave_id = null;
+      if ($scope.results.length > 0) {
+        grave_id = $scope.results[0].properties.gid; //για να πάρει το gid του συγκεκριμένου τάφου
+      }
+
+      // put,post (url,body -- json που στελνω στον server)
+
+      $http.post('/insert_person', table.properties, { headers: { 'Content-Type': 'application/json' } }).then(function (response) {
+        console.log(response);
+        openModal();
+        //alert("Αποθηκεύτηκε επιτυχώς");
+      },
+        function (err) {
+          console.warn(err);
+          openModal();
+          // alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!")
         }
       )
     }
@@ -391,5 +466,70 @@ angular.module('myApp.home', ['ngRoute'])
 
       map.addInteraction(selectSingleClick);
     });
-  }]);
 
+    $scope.inlineOptions = {
+      customClass: getDayClass,
+      minDate: new Date(),
+      showWeeks: true
+    };
+
+    $scope.dateOptions = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(22, 5, 2020),
+      minDate: new Date(),
+      startingDay: 1
+    };
+
+    // Disable weekend selection
+    function disabled(data) {
+      var date = data.date,
+        mode = data.mode;
+      return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+    }
+
+    $scope.open1 = function () {
+      $scope.popup1.opened = true;
+    };
+
+    $scope.setDate = function (day, month, year) {
+      $scope.dt = new Date(day, month, year);
+    };
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [
+      {
+        date: tomorrow,
+        status: 'full'
+      },
+      {
+        date: afterTomorrow,
+        status: 'partially'
+      }
+    ];
+
+    function getDayClass(data) {
+      var date = data.date,
+        mode = data.mode;
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
+        }
+      }
+
+      return '';
+    }
+  }]);
