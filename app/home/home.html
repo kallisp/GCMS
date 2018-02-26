@@ -237,15 +237,15 @@
             <tr>
                 <td class="search-property">Ημερομηνία Γέννησης</td>
                 <td class="search-results">
-                        <p class="input-group">
-                                <input type="text"  placeholder="Εισάγετε ημερομηνία γέννησης" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="table.properties.birth_date" is-open="popup1.opened" datepicker-options="dateOptions"
-                                    ng-required="true" close-text="Close" />
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="open1()">
-                                        <i class="glyphicon glyphicon-calendar"></i>
-                                    </button>
-                                </span>
-                            </p>
+                    <p class="input-group">
+                        <input type="text" placeholder="Εισάγετε ημερομηνία γέννησης" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="table.properties.birth_date"
+                            is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
                     <!-- <input type="text" placeholder="Εισάγετε ημερομηνία γέννησης" ng-model="table.properties.birth_date"> -->
                 </td>
             </tr>
@@ -297,12 +297,15 @@
 <!-- html for the controller -ModalDemoCtrl- from Bootstrap Angular Ui -->
 <div ng-controller="HomeCtrl as $ctrl" class="modal-demo">
     <script type="text/ng-template" id="myModalContent.html">
-            <div class="modal-body" id="modal-body">
-                <p>Some text in the modal.</p>
+        <div class="modal-header">
+                <h5 class="modal-title" >{{title}}</h5>
+            </div>
+        <div class="modal-body" id="modal-body">
+                <p>{{message}}</p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Κλείσιμο</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Κλείσιμο</button>
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
         </div>
     </script>
 </div>

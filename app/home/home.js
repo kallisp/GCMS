@@ -86,36 +86,33 @@ angular.module('myApp.home', ['ngRoute'])
 
     // create function to open the modal from Bootstrap Angular Ui
 
-    function openModal() {
+    function openModal(title, message) {
       var parentSelector = null;
       var parentElem = parentSelector ?
         angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
       var modalInstance = $uibModal.open({
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
         templateUrl: 'myModalContent.html',
-        controller: function ($uibModalInstance) {  // controller for the Modal - from Bootstrap Angular Ui
-          var $ctrl = this;
-          // $ctrl.items = items;
-          // $ctrl.selected = {
-          //   item: $ctrl.items[0]
-          // };
+        size: 'md',
+        resolve: {
+          data: function () {
+            return {
+              title: title,
+              message: message
+            }
+          }
+        },
+        controller: function ($uibModalInstance, data, $scope) {  // controller for the Modal - from Bootstrap Angular Ui
+          $scope.message = data.message;
+          $scope.title = data.title;
 
-          $ctrl.ok = function () {
+          $scope.ok = function () {
             $uibModalInstance.close();
           };
 
-          $ctrl.cancel = function () {
+          $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
           };
-        },
-        controllerAs: '$ctrl',
-        size: 'sm',
-        // resolve: {
-        //   items: function () {
-        //     return $ctrl.items;
-        //   }
-        // }
+        }
       });
     }
 
@@ -190,16 +187,16 @@ angular.module('myApp.home', ['ngRoute'])
         $scope.results = response.data.rows;
         $scope.sidebarSearchResultsOpen = true;
         if ($scope.results.length == 0) {
-          openModal();  // create function to open modal instead of alert
+          openModal("Ούπς", "Δε βρέθηκαν αποτελέσματα. Δοκιμάστε με άλλο φίλτρο αναζήτησης!");  // create function to open modal instead of alert
           // alert("Δε βρέθηκαν αποτελέσματα. Δοκιμάστε με άλλο φίλτρο αναζήτησης!")
         }
       },
         function (err) {
           console.warn(err);
-          openModal();
+          openModal("Σφάλμα", "Παρουσιάστηκε σφάλμα κατά την αναζήτηση. Προσπαθήστε ξανά!");
           // alert("Παρουσιάστηκε σφάλμα κατά την αναζήτηση. Προσπαθήστε ξανά!")
         }
-        )
+      )
 
       //   $http.post('geoserver/GCMS/wms', bodySearch).then(function (response) {  //http://localhost:8080/geoserver/GCMS/wms
       //     console.log(response);
@@ -233,10 +230,10 @@ angular.module('myApp.home', ['ngRoute'])
       },
         function (err) {
           console.warn(err);
-          openModal();
+          openModal("Σφάλμα", "Παρουσιάστηκε σφάλμα. Προσπαθήστε ξανά!");
           // alert("Παρουσιάστηκε σφάλμα. Προσπαθήστε ξανά!")
         }
-        )
+      )
     }
 
     var gmloptions = new ol.format.GML({
@@ -260,12 +257,12 @@ angular.module('myApp.home', ['ngRoute'])
 
       $http.post('/persons_graves', table.properties, { headers: { 'Content-Type': 'application/json' } }).then(function (response) {
         console.log(response);
-        openModal();
+        openModal("Επιτυχές", "Αποθηκεύτηκε επιτυχώς");
         //alert("Αποθηκεύτηκε επιτυχώς");
       },
         function (err) {
           console.warn(err);
-          openModal();
+          openModal("Σφάλμα", "Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!");
           //alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!")
         }
       )
@@ -282,12 +279,12 @@ angular.module('myApp.home', ['ngRoute'])
 
       $http.post('/insert_person', table.properties, { headers: { 'Content-Type': 'application/json' } }).then(function (response) {
         console.log(response);
-        openModal();
+        openModal("Επιτυχές", "Αποθηκεύτηκε επιτυχώς");
         //alert("Αποθηκεύτηκε επιτυχώς");
       },
         function (err) {
           console.warn(err);
-          openModal();
+          openModal("Σφάλμα", "Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!");
           // alert("Παρουσιάστηκε σφάλμα κατά την αποθήκευση. Προσπαθήστε ξανά!")
         }
       )
